@@ -1,4 +1,4 @@
-<img src="logo.png" align="right" />
+<img src="logo.png" align="right" width="128" height="128" />
 
 # HoloCure.Launcher ![License](https://img.shields.io/github/license/steviegt6/holocure-launcher?style=flat-square) ![Release](https://img.shields.io/github/v/release/steviegt6/holocure-launcher?style=flat-square) ![Language](https://img.shields.io/badge/language-c%23-green?style=flat-square)
 
