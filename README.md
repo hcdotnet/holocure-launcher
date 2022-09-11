@@ -1,2 +1,7 @@
-# holocure-launcher
-Open-source HoloCure launcher written in C# using osu!framework; efficient, and powerful alternative to the official launcher.
+<img src="icon.png" align="right" />
+
+# HoloCure.Launcher
+
+> An open-source launcher HoloCure!
+
+A powerful, efficient, and open-source launcher for HoloCure, aiming to make your experience even better than before.
