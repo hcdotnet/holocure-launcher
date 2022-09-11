@@ -12,7 +12,7 @@ namespace HoloCure.Launcher.Game.Games
     {
         SpriteText MakeMainWindowTitle();
 
-        Drawable MakeSiderbarIcon();
+        Drawable MakeSidebarIcon();
 
         Drawable MakeSidebarTitle();
 
