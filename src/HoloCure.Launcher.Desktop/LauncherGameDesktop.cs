@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using HoloCure.Launcher.Desktop.AddOns;
 using HoloCure.Launcher.Desktop.Updater;
 using HoloCure.Launcher.Game;
 using HoloCure.Launcher.Game.Updater;
@@ -65,6 +66,13 @@ namespace HoloCure.Launcher.Desktop
                     // Non-Windows platforms will have to live with a notification and nothing more, for now.
                     return new SimpleUpdateManager();
             }
+        }
+
+        protected override void LoadComplete()
+        {
+            base.LoadComplete();
+
+            LoadComponentAsync(new DRPComponent());
         }
     }
 }
