@@ -17,7 +17,7 @@
     <NuspecFile>HoloCure.Launcher.Desktop.nuspec</NuspecFile>
     <NuspecProperties>configuration=$(Configuration);framework=$(TargetFramework);unifiedVersion=$(UnifiedVersion)</NuspecProperties>
 
-    <PackageId>HoloCure.Launcher.Desktop</PackageId>
+    <!-- <PackageId>HoloCure.Launcher.Desktop</PackageId> -->
     <Title>HoloCure.Launcher - Open-Source HoloCure Launcher</Title>
     <Authors>Tomat</Authors>
     <Description>An open-source, powerful, configurable alternative to the official HoloCure launcher.</Description>
