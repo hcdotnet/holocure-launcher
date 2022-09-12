@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <UnifiedVersion>0.0.0.0</UnifiedVersion>
+    <UnifiedVersion>1.0.0.0</UnifiedVersion>
   </PropertyGroup>
 
 </Project>
