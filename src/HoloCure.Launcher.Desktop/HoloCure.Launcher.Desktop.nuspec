@@ -3,7 +3,7 @@
 
     <metadata>
         <id>HoloCure.Launcher.Desktop</id>
-        <version>1.0.0</version>
+        <version>$unifiedVersion$</version>
         <title>HoloCure.Launcher - Open-Source HoloCure Launcher</title>
         <authors>Tomat</authors>
         <owners>Tomat</owners>
