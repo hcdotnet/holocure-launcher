@@ -1,8 +1,8 @@
 <Project>
 
-  <PropertyGroup>
-    <UnifiedVersion>0.0.0.0</UnifiedVersion>
+  <Import Project="version.targets"/>
 
+  <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
 
