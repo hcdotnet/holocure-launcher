@@ -10,6 +10,34 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
+  <PropertyGroup Label="NuGet">
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <NuspecFile>HoloCure.Launcher.Desktop.nuspec</NuspecFile>
+    <NuspecProperties>configuration=$(Configuration);framework=$(TargetFramework)</NuspecProperties>
+
+    <PackageId>HoloCure.Launcher.Desktop</PackageId>
+    <Title>HoloCure.Launcher - Open-Source HoloCure Launcher</Title>
+    <Authors>Tomat</Authors>
+    <Description>An open-source, powerful, configurable alternative to the official HoloCure launcher.</Description>
+    <Version>$(UnifiedVersion)</Version>
+
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+    <PackageProjectUrl>https://github.com/steviegt6/holocure-modloader</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/steviegt6/holocure-launcher/blob/master/assets/logo_rocket.ico</PackageIconUrl>
+
+    <!-- <IncludeBuildOutput>false</IncludeBuildOutput> -->
+  </PropertyGroup>
+
+  <!--
+  <ItemGroup Label="NuGet Packaging">
+    <None PackagePath="lib/net45/" Include="$(OutputPath)\**" Pack="true"/>
+  </ItemGroup>
+  -->
+
   <ItemGroup Label="Project References">
     <ProjectReference Include="..\HoloCure.Launcher.Game\HoloCure.Launcher.Game.csproj"/>
   </ItemGroup>

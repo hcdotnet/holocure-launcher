@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+
+    <metadata>
+        <id>HoloCure.Launcher.Desktop</id>
+        <version>1.0.0</version>
+        <title>HoloCure.Launcher - Open-Source HoloCure Launcher</title>
+        <authors>Tomat</authors>
+        <owners>Tomat</owners>
+        <license type="expression">GPL-3.0-only</license>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <licenseUrl>https://licenses.nuget.org/GPL-3.0-only</licenseUrl>
+        <projectUrl>https://github.com/steviegt6/holocure-modloader</projectUrl>
+        <iconUrl>https://github.com/steviegt6/holocure-launcher/blob/master/assets/logo_rocket.ico</iconUrl>
+        <description>An open-source, powerful, configurable alternative to the official HoloCure launcher.</description>
+    </metadata>
+
+    <files>
+        <file src="bin\$configuration$\$framework$\**.exe" target="lib\net45\" exclude="**vshost**"/>
+        <file src="bin\$configuration$\$framework$\**.dll" target="lib\net45\"/>
+        <file src="bin\$configuration$\$framework$\**.config" target="lib\net45\"/>
+        <file src="bin\$configuration$\$framework$\**.json" target="lib\net45\"/>
+    </files>
+
+</package>
