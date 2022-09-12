@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
+using HoloCure.Launcher.Game;
 using osu.Framework.Allocation;
 using osu.Framework.Logging;
 using Squirrel;
@@ -40,6 +41,9 @@ namespace HoloCure.Launcher.Desktop.Updater
         /// </summary>
         private readonly ILogger squirrelLogger = new SquirrelLogger();
 
+        [Resolved]
+        private LauncherGame game { get; set; }
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -65,6 +69,7 @@ namespace HoloCure.Launcher.Desktop.Updater
                     if (updatePending)
                     {
                         // TODO: display notifcation again too
+                        await prepareUpdateAsync().ContinueWith(_ => Schedule(() => game.Exit()));
                         return true;
                     }
 
