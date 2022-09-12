@@ -1,28 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../shared.targets"/>
+
   <PropertyGroup Label="Project">
     <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
     <AssemblyName>HoloCure.Launcher</AssemblyName>
     <ApplicationIcon>launcher.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>0.0.0</Version>
-    <FileVersion>0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
-    <ProjectReference Include="..\HoloCure.Launcher.Game\HoloCure.Launcher.Game.csproj" />
+    <ProjectReference Include="..\HoloCure.Launcher.Game\HoloCure.Launcher.Game.csproj"/>
+  </ItemGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="Clowd.Squirrel" Version="2.9.42"/>
+    <PackageReference Include="DiscordRichPresence" Version="1.0.175"/>
   </ItemGroup>
 
   <ItemGroup Label="Resources">
-    <EmbeddedResource Include="launcher.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Clowd.Squirrel" Version="2.9.42" />
-    <PackageReference Include="DiscordRichPresence" Version="1.0.175" />
+    <EmbeddedResource Include="launcher.ico"/>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,13 @@
+<Project>
+
+  <PropertyGroup>
+    <UnifiedVersion>0.0.0.0</UnifiedVersion>
+
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+
+    <Version>$(UnifiedVersion)</Version>
+    <FileVersion>$(UnifiedVersion)</FileVersion>
+  </PropertyGroup>
+
+</Project>
