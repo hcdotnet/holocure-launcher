@@ -22,7 +22,7 @@ namespace HoloCure.Launcher.Game
                 new SpriteText
                 {
                     Y = 20,
-                    Text = "Main Screen",
+                    Text = "Modified String",
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
                     Font = FontUsage.Default.With(size: 40)
