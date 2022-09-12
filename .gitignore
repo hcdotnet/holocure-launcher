@@ -1,0 +1,11 @@
+# IDE/editor caches
+.vs/
+.rider/
+.vscode/
+
+# Binary and object files/caches
+bin/
+obj/
+
+# Squirrel releasify releases
+Releases/
