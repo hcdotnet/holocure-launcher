@@ -34,10 +34,23 @@ namespace HoloCure.Launcher.Game
             });
         }
 
+        #region Dependencies
+
+        /// <summary>
+        ///     Set by <see cref="CreateChildDependencies"/>, exposes access to the <see cref="DependencyContainer"/> instance used by this type in the hierarchy.
+        /// </summary>
+        private DependencyContainer dependencies = null!;
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
+
+        #endregion
+
         [BackgroundDependencyLoader]
         private void load()
         {
             Resources.AddStore(new DllResourceStore(typeof(LauncherResources).Assembly));
+
+            dependencies.CacheAs(this);
         }
     }
 }
