@@ -40,7 +40,7 @@ namespace HoloCure.Launcher.Game
                 if (CreateUpdateManager()?.AsDrawable() is { } updateManager)
                 {
                     dependencies.CacheAs(updateManager);
-                    LoadComponent(updateManager);
+                    Add(updateManager);
                 }
             });
 
