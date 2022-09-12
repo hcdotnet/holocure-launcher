@@ -19,6 +19,7 @@ namespace HoloCure.Launcher.Desktop.Updater
     {
         private const string github_url = "https://github.com/steviegt6/holocure-launcher";
         private const string logger_name = "updater";
+        private const string appdata_name = "HoloCure.Launcher";
         private static readonly Logger logger = Logger.GetLogger(logger_name);
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace HoloCure.Launcher.Desktop.Updater
             {
                 // TODO: do we need a GH access token? 60 reqs per hour is pretty generous (per-IP)
                 // TODO: how to handle potential pre-releases? should we make those stable? make an opt-in cfg option? needs discussion.
-                updateManager ??= new GithubUpdateManager(github_url, false, null, "");
+                updateManager ??= new GithubUpdateManager(github_url, false, null, appdata_name);
                 UpdateInfo? info = await updateManager.CheckForUpdate(!useDeltaPatching).ConfigureAwait(false);
 
                 if (info.ReleasesToApply.Count == 0)
