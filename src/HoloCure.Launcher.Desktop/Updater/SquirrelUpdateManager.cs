@@ -80,6 +80,7 @@ namespace HoloCure.Launcher.Desktop.Updater
                 {
                     await updateManager.DownloadReleases(info.ReleasesToApply, x => _ = x / 100f).ConfigureAwait(false);
                     await updateManager.ApplyReleases(info, x => _ = x / 100f).ConfigureAwait(false);
+                    updatePending = true;
                 }
                 catch (Exception e)
                 {
