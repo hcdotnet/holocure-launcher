@@ -9,9 +9,22 @@ namespace HoloCure.Launcher.Game
     {
         private ScreenStack screenStack = null!;
 
+        #region Dependencies
+
+        /// <summary>
+        ///     Set by <see cref="CreateChildDependencies"/>, exposes access to the <see cref="DependencyContainer"/> instance used by this type in the hierarchy.
+        /// </summary>
+        private DependencyContainer dependencies = null!;
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
+
+        #endregion
+
         [BackgroundDependencyLoader]
         private void load()
         {
+            dependencies.CacheAs(this);
+
             // Add your top-level game components here.
             // A screen stack and sample screen has been provided for convenience, but you can replace it if you don't want to use screens.
             Child = screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
@@ -20,6 +33,16 @@ namespace HoloCure.Launcher.Game
         protected override void LoadComplete()
         {
             base.LoadComplete();
+
+            // Schedule to be ran after LoadComplete finishes.
+            Schedule(() =>
+            {
+                if (CreateUpdateManager()?.AsDrawable() is { } updateManager)
+                {
+                    dependencies.CacheAs(updateManager);
+                    LoadComponent(updateManager);
+                }
+            });
 
             screenStack.Push(new MainScreen());
         }
