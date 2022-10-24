@@ -1,0 +1,1 @@
+https://github.com/ppy/osu-resources/tree/master/osu.Game.Resources/Fonts

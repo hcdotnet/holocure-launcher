@@ -1,22 +1,43 @@
+using System;
+using HoloCure.Launcher.Core;
+using osu.Framework.Graphics;
 using osu.Framework.Testing;
 
-namespace HoloCure.Launcher.Game.Tests.Visual
+namespace HoloCure.Launcher.Game.Tests.Visual;
+
+public class LauncherTestScene : TestScene
 {
-    public class LauncherTestScene : TestScene
+    protected override ITestSceneTestRunner CreateRunner() => new LauncherTestSceneTestRunner();
+
+    private class LauncherTestSceneTestRunner : LauncherGameBase, ITestSceneTestRunner
     {
-        protected override ITestSceneTestRunner CreateRunner() => new LauncherTestSceneTestRunner();
+        protected override IStoreProvider StoreProvider { get; }
 
-        private class LauncherTestSceneTestRunner : LauncherGameBase, ITestSceneTestRunner
+        private TestSceneTestRunner.TestRunner runner = null!;
+
+        public LauncherTestSceneTestRunner()
         {
-            private TestSceneTestRunner.TestRunner runner = null!;
+            StoreProvider = new LauncherTestSceneStoreProvider(LoadComponent);
+        }
 
-            protected override void LoadAsyncComplete()
+        protected override void LoadAsyncComplete()
+        {
+            base.LoadAsyncComplete();
+            Add(runner = new TestSceneTestRunner.TestRunner());
+        }
+
+        public void RunTestBlocking(TestScene test) => runner.RunTestBlocking(test);
+
+        private class LauncherTestSceneStoreProvider : LauncherStoreProvider
+        {
+            public LauncherTestSceneStoreProvider(Action<Drawable> componentLoader)
+                : base(componentLoader)
             {
-                base.LoadAsyncComplete();
-                Add(runner = new TestSceneTestRunner.TestRunner());
             }
 
-            public void RunTestBlocking(TestScene test) => runner.RunTestBlocking(test);
+            protected override void InitializeFonts(CoreGame game)
+            {
+            }
         }
     }
 }

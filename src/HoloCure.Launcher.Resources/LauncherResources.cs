@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
 
-namespace HoloCure.Launcher.Resources
+namespace HoloCure.Launcher.Resources;
+
+public static class LauncherResources
 {
-    public static class LauncherResources
-    {
-        public static Assembly ResourceAssembly => typeof(LauncherResources).Assembly;
-    }
+    public static Assembly ResourceAssembly => typeof(LauncherResources).Assembly;
 }

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../shared.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="ppy.osu.Framework" Version="2022.928.0" />
+  </ItemGroup>
+
+</Project>

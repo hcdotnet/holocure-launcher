@@ -1,17 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../shared.targets"/>
+  <Import Project="../shared.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
-    <ProjectReference Include="..\HoloCure.Launcher.Resources\HoloCure.Launcher.Resources.csproj"/>
+    <ProjectReference Include="..\HoloCure.Launcher.Core.Fluent\HoloCure.Launcher.Core.Fluent.csproj" />
+    <ProjectReference Include="..\HoloCure.Launcher.Core\HoloCure.Launcher.Core.csproj" />
+    <ProjectReference Include="..\HoloCure.Launcher.Resources\HoloCure.Launcher.Resources.csproj" />
   </ItemGroup>
 
-  <ItemGroup Label="Package References">
-    <PackageReference Include="ppy.osu.Framework" Version="2022.908.0"/>
+  <ItemGroup>
+    <Folder Include="Games\HoloCure" />
   </ItemGroup>
 
 </Project>

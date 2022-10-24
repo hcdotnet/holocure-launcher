@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../shared.targets"/>
+  <Import Project="../shared.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Fonts\**\*"/>
-    <EmbeddedResource Include="Samples\**\*"/>
-    <EmbeddedResource Include="Textures\**\*"/>
-    <EmbeddedResource Include="Tracks\**\*"/>
+    <EmbeddedResource Include="Fonts\**\*" />
+    <EmbeddedResource Include="Samples\**\*" />
+    <EmbeddedResource Include="Textures\**\*" />
+    <EmbeddedResource Include="Tracks\**\*" />
+    <EmbeddedResource Include="Localization\**\*" />
   </ItemGroup>
 
 </Project>

@@ -1,56 +1,48 @@
-using System;
-using System.Reflection;
+using HoloCure.Launcher.Core;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.IO.Stores;
-using HoloCure.Launcher.Resources;
-using osu.Framework.Development;
+using osu.Framework.Graphics.Cursor;
 
-namespace HoloCure.Launcher.Game
+namespace HoloCure.Launcher.Game;
+
+public partial class LauncherGameBase : CoreGame
 {
-    public class LauncherGameBase : osu.Framework.Game
+    /// <summary>
+    ///     The <see cref="Edges"/> that the game should be drawn over at a top level. <br />
+    ///     Defaults to <see cref="Edges.None"/>.
+    /// </summary>
+    public virtual Edges SafeAreaOverrideEdges => Edges.None;
+
+    protected override Container<Drawable> Content => content;
+
+    private Container content = null!;
+
+    protected LauncherGameBase()
     {
-        public const string GAME_NAME = "HoloCure.Launcher";
-        private const string build_suffix = "release";
-
-        public virtual Version AssemblyVersion => Assembly.GetEntryAssembly()?.GetName().Version ?? new Version();
-
-        public virtual bool IsDeployedBuild => AssemblyVersion.Major > 0; // Version is 0.0.0.0 on local builds.
-
-        public virtual string BuildSuffix => build_suffix;
-
-        public virtual string Version => !IsDeployedBuild ? $"local {(DebugUtils.IsDebugBuild ? "debug" : "release")}" : $"{AssemblyVersion}-{BuildSuffix}";
-
-        protected override Container<Drawable> Content { get; }
-
-        protected LauncherGameBase()
-        {
-            Name = GAME_NAME;
-
-            base.Content.Add(Content = new Container
-            {
-                RelativeSizeAxes = Axes.Both
-            });
-        }
-
-        #region Dependencies
-
-        /// <summary>
-        ///     Set by <see cref="CreateChildDependencies"/>, exposes access to the <see cref="DependencyContainer"/> instance used by this type in the hierarchy.
-        /// </summary>
-        private DependencyContainer dependencies = null!;
-
-        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
-
-        #endregion
-
-        [BackgroundDependencyLoader]
-        private void load()
-        {
-            Resources.AddStore(new DllResourceStore(typeof(LauncherResources).Assembly));
-
-            dependencies.CacheAs(this);
-        }
+        Name = GAME_NAME;
+        StoreProvider = new LauncherStoreProvider(LoadComponent);
     }
+
+    [BackgroundDependencyLoader]
+    private void load()
+    {
+        dependencies.CacheAs(this);
+
+        base.Content.Add(new SafeAreaContainer
+        {
+            SafeAreaOverrideEdges = SafeAreaOverrideEdges,
+            RelativeSizeAxes = Axes.Both,
+            Child = CreateScalingContainer()
+               .WithChildren(new Drawable[]
+                {
+                    content = new TooltipContainer
+                    {
+                        RelativeSizeAxes = Axes.Both
+                    }
+                })
+        });
+    }
+
+    protected virtual Container CreateScalingContainer() => new DrawSizePreservingFillContainer();
 }

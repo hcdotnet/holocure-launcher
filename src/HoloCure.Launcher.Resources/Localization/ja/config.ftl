@@ -1,0 +1,1 @@
+﻿localized-name = 日本語
