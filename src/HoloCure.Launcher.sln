@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomat.Crowdin.LangCodeExtra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Core.Fluent.SourceGenerator", "HoloCure.Launcher.Core.Fluent.SourceGenerator\HoloCure.Launcher.Core.Fluent.SourceGenerator.csproj", "{E20806ED-569A-4AC5-AA84-91F88F367C31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCureLauncher", "..\docs\HoloCureLauncher\HoloCureLauncher.csproj", "{9DE6E371-5095-45CA-B1FA-B41F936FC18C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,18 @@ Global
 		{E20806ED-569A-4AC5-AA84-91F88F367C31}.Release|iPhone.Build.0 = Release|Any CPU
 		{E20806ED-569A-4AC5-AA84-91F88F367C31}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{E20806ED-569A-4AC5-AA84-91F88F367C31}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhone.Build.0 = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

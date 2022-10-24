@@ -2,7 +2,6 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using HoloCure.Launcher.Game.Graphics.Sprites;
-using osu.Framework.Allocation;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Cursor;
