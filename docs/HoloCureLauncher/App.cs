@@ -18,16 +18,17 @@ namespace HoloCureLauncher;
 
 #endregion
 
-
 /// <summary>
-/// 
+///     Compiler-generated implementation of <see cref="Application"/> used to set the values of properties within the base <see cref="Application"/> class. <br />
+///     Provides an <see cref="InitializeComponent"/> method to achieve the aforementioned property initialization as well as a static program entrypoint.
 /// </summary>
 public class App : Application
 {
     #region Compiler-generated
 
     /// <summary>
-    /// 
+    ///     Initializes this <see cref="Application"/> component. <br />
+    ///     Sets <see cref="Application.StartupUri"/> as <see cref="UriKind.Relative"/> with a value of <c>"MainWindow.xaml"</c>.
     /// </summary>
     [DebuggerNonUserCode]
     [GeneratedCode("PresentationBuildTasks", "6.0.6.0")]
@@ -36,7 +37,8 @@ public class App : Application
     }
 
     /// <summary>
-    /// 
+    ///     The main program entrypoint. <br />
+    ///     Instantiates a new instance of <see cref="App"/>, runs <see cref="App.InitializeComponent()"/> and them <see cref="App.Run()"/>.
     /// </summary>
     [STAThread]
     [DebuggerNonUserCode]
