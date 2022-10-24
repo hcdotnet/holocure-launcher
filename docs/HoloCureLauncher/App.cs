@@ -9,6 +9,7 @@ namespace HoloCureLauncher;
 
 // These are definitions not part of the original code.
 
+// ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedMember.Local
@@ -18,6 +19,7 @@ namespace HoloCureLauncher;
 
 #endregion
 
+/// <inheritdoc cref="Application"/>
 /// <summary>
 ///     Compiler-generated implementation of <see cref="Application"/> used to set the values of properties within the base <see cref="Application"/> class. <br />
 ///     Provides an <see cref="InitializeComponent"/> method to achieve the aforementioned property initialization as well as a static program entrypoint.

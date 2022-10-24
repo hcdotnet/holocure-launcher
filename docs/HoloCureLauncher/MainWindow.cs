@@ -10,6 +10,7 @@ using HoloCureLauncher.Helpers;
 
 // These are definitions not part of the original code.
 
+// ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedMember.Local
