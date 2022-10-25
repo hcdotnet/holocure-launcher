@@ -24,6 +24,9 @@ namespace HoloCureLauncher;
 ///     Compiler-generated implementation of <see cref="Application"/> used to set the values of properties within the base <see cref="Application"/> class. <br />
 ///     Provides an <see cref="InitializeComponent"/> method to achieve the aforementioned property initialization as well as a static program entrypoint.
 /// </summary>
+/// <remarks>
+///     <see cref="Application"/>: Encapsulates a Windows Presentation Foundation application.
+/// </remarks>
 public class App : Application
 {
     #region Compiler-generated
