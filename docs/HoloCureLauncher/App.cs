@@ -15,6 +15,7 @@ namespace HoloCureLauncher;
 // ReSharper disable UnusedMember.Local
 #pragma warning disable CA1822
 #pragma warning disable CS0169
+#pragma warning disable CS0649
 #pragma warning disable CS1998
 
 #endregion
