@@ -17,3 +17,5 @@ Member definitions are decompiled by ILSpy from the proprietary binary and are s
   - Method bodies and field/property initializers have been manually excluded.
   - Regions (such as the `Compiler-generated` `#region`s) are manually included for code clarity.
   - The `External definitions` `#region` is not part of the source program and are included by this project for better editor support
+- Each unnested type declaration is placed in its own file.
+- Namespaces are tied to the directory containing the file, with the root directory representing the `HoloCureLauncher` namespace. This means, for example, types defined in files within the `./Helpers/` should be in the `HoloCure.Helpers` namespace.
