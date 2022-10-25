@@ -1,6 +1,6 @@
 # HoloCureLauncher Documentation
 
-Contains a compilable (but non-functional) project containing the fully-documented member definitions included in the official, proprietary HoloCureLauncher.
+Contains a compilable (but non-functional) project containing the fully, extensive documentation of member definitions included in the official, proprietary HoloCureLauncher.
 
 Member documentation details under what circumstances their values are changed or access, they're invoked, etc., and what purpose they serve.
 
