@@ -43,7 +43,7 @@ public class App : Application
 
     /// <summary>
     ///     The main program entrypoint. <br />
-    ///     Instantiates a new instance of <see cref="App"/>, runs <see cref="App.InitializeComponent()"/> and them <see cref="App.Run()"/>.
+    ///     Instantiates a new instance of <see cref="App"/>, runs <see cref="App.InitializeComponent"/> and them <see cref="App.Run()"/>.
     /// </summary>
     [STAThread]
     [DebuggerNonUserCode]
