@@ -205,7 +205,7 @@ public class MainWindow : Window, IComponentConnector
     /// <summary>
     ///     <paramref cref="connectionId"/> is expected to be either a value of <c>1</c> or <c>2</c>. Any other value sets <paramref cref="_contentLoaded"/> to true. <br />
     ///     If <paramref cref="connectionId"/> is <c>1</c>, the <see cref="PlayButton"/> is set to the value of the <paramref name="target"/>.
-    ///     If <paramref cref="connectionId"/> is <c>21</c>, the <see cref="DownloadButton"/> is set to the value of the <paramref name="target"/>.
+    ///     If <paramref cref="connectionId"/> is <c>2</c>, the <see cref="DownloadButton"/> is set to the value of the <paramref name="target"/>.
     /// </summary>
     /// <remarks>
     ///     <see cref="IComponentConnector.Connect"/>: Called by the BamlReader to attach events and Names on compiled content.
