@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Tomat.Crowdin.LangCodeExtractor;
 
-// TODO: Verify that this is up-to-date periodically.
+// Verify that this is up-to-date periodically.
 public static class Program
 {
     private const string HTML =
