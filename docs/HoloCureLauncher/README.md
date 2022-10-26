@@ -12,7 +12,7 @@ Member definitions are decompiled by ILSpy from the proprietary binary and are s
 - The proprietary launcher and this project both use .NET 6.0 with the `net6.0-windows` framework target.
 - The project file (`.csproj`) used to build this project is not an accurate repreentation of the project file used to compile the proprietary launcher.
   - Accurate representation is not a necessity and never a guarantee regardless.
-- The `TRACE` `#define`d in `HoloCureLauncher.Helpers.Downloader` is also `#define`d in the distributed proprietary binaries.
+- The `TRACE` `#define`d in `HoloCureLauncher.Helpers.Downloader` is included due to `Trace.WriteLine` references existing in the compiled code.
 - Exposed members are all products of decompilation.
   - Method bodies and field/property initializers have been manually excluded.
   - Regions (such as the `Compiler-generated` `#region`s) are manually included for code clarity.
