@@ -26,5 +26,7 @@ jobs:
 
       - name: Run Issue Bot
         uses: derjuulsn/todo-issue@main
+        with:
+         label: ["automated (todo :spiral_notepad:)"]
         env:
           GITHUB_TOKEN: ${{ secrets.TODO_TOKEN }}
