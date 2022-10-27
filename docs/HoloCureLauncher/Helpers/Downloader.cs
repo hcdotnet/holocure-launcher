@@ -112,7 +112,7 @@ public class Downloader
     }
 
     /// <summary>
-    ///     Returns <see cref="GameDirectoryPath"/>;
+    ///     Returns <see cref="GameDirectoryPath"/>.
     /// </summary>
     /// <returns>The directory containing the game.</returns>
     public string GetGameDirectoryPath() {
