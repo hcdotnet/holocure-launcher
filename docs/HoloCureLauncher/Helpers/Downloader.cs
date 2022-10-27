@@ -44,7 +44,7 @@ public class Downloader
     private static string DownloadKey;
 
     /// <summary>
-    ///     Supposedly the itch.io download URL; goes unused. Initialized using <see cref="ConfigurationManager.AppSettings"/><c>["GameUrl"]</c>.
+    ///     Supposedly the itch.io download URL; goes unused (never referenced in code). Initialized using <see cref="ConfigurationManager.AppSettings"/><c>["GameUrl"]</c>.
     /// </summary>
     private static string GameUrl;
 
