@@ -6,6 +6,8 @@
         <LangVersion>latest</LangVersion>
         <Nullable>disable</Nullable>
         <UseWpf>true</UseWpf>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>$(MSBuildProjectDirectory)\documentation.xml</DocumentationFile>
     </PropertyGroup>
 
 </Project>
