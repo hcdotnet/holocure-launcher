@@ -16,7 +16,7 @@ Documented below are the actual endpoints. For the database URL used by HoloCure
   "enemyDefeated": "",
   "character": "the ID of the character being used",
   "level": "the player's level",
-  "uid", "uid",
-  "date", "the year followed by the week, ex. '2022_5'"
+  "uid": "uid",
+  "date": "the year followed by the week, ex. '2022_5'"
 }
 ```
