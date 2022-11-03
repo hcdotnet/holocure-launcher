@@ -4,4 +4,4 @@ Documentation of tools and software included in or related to the monolithic `Ho
 
 ## Directories
 
-* `./HoloCureLauncher` - Exposes and documents all members in the official, proprietary HoloCure launcher.
+* `./HoloCureLauncher/` - Exposes and documents all members in the official, proprietary HoloCure launcher.
