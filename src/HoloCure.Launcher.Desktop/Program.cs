@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.Versioning;
+using HoloCure.Launcher.Base;
 using osu.Framework.Platform;
 using osu.Framework;
-using HoloCure.Launcher.Game;
 using Squirrel;
 
 namespace HoloCure.Launcher.Desktop;
@@ -16,12 +16,8 @@ public static class Program
         {
             setupSquirrel();
         }
-        /*else
-        {
-            // TODO: SDL_ShowSimpleMessageBox - warn about an unsupported platform?
-        }*/
 
-        using GameHost host = Host.GetSuitableDesktopHost(LauncherGameBase.GAME_NAME);
+        using GameHost host = Host.GetSuitableDesktopHost(LauncherBase.GAME_NAME);
         using osu.Framework.Game game = new LauncherGameDesktop();
         host.Run(game);
     }

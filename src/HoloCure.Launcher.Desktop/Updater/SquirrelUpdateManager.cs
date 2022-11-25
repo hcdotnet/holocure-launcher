@@ -11,10 +11,10 @@ using LogLevel = Squirrel.SimpleSplat.LogLevel;
 namespace HoloCure.Launcher.Desktop.Updater;
 
 /// <summary>
-///     An <see cref="HoloCure.Launcher.Game.Updater.UpdateManager"/> implementation which uses <c>Clown.Squirrel</c> to handle updating.
+///     An <see cref="HoloCure.LauncherUpdater.UpdateManager"/> implementation which uses <c>Clown.Squirrel</c> to handle updating.
 /// </summary>
 [SupportedOSPlatform("windows")]
-public class SquirrelUpdateManager : HoloCure.Launcher.Game.Updater.UpdateManager
+public class SquirrelUpdateManager : Base.Core.Updating.UpdateManagers.DrawableUpdateManager
 
 {
     private const string github_url = "https://github.com/steviegt6/holocure-launcher";
@@ -99,7 +99,6 @@ public class SquirrelUpdateManager : HoloCure.Launcher.Game.Updater.UpdateManage
                 }
                 else
                 {
-                    // TODO: display notification on *real* (non-delta patch) failure.
                     Logger.Error(e, "update failed!");
                 }
             }

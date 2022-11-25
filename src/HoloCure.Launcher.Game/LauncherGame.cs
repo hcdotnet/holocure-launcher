@@ -1,12 +1,13 @@
-﻿using HoloCure.Launcher.Game.Screens;
-using HoloCure.Launcher.Game.Updater;
+﻿using HoloCure.Launcher.Base;
+using HoloCure.Launcher.Base.Core.Updating;
+using HoloCure.Launcher.Game.Rendering.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 
 namespace HoloCure.Launcher.Game;
 
-public abstract class LauncherGame : LauncherGameBase
+public abstract partial class LauncherGame : LauncherBase
 {
     private ScreenStack screenStack = null!;
 

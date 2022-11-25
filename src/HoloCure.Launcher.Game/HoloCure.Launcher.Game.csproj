@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
-    <ProjectReference Include="..\HoloCure.Launcher.Core.Fluent\HoloCure.Launcher.Core.Fluent.csproj" />
-    <ProjectReference Include="..\HoloCure.Launcher.Core\HoloCure.Launcher.Core.csproj" />
-    <ProjectReference Include="..\HoloCure.Launcher.Resources\HoloCure.Launcher.Resources.csproj" />
+    <ProjectReference Include="..\HoloCure.Launcher.Base\HoloCure.Launcher.Base.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Games\HoloCure" />
+    <Folder Include="Rendering" />
   </ItemGroup>
 
 </Project>

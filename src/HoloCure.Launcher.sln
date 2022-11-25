@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Game", "H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Resources", "HoloCure.Launcher.Resources\HoloCure.Launcher.Resources.csproj", "{31D3872C-3A4F-437E-9655-3EF58DD62F46}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{9AF9C164-2A9E-4958-BB12-0FEDC40F58EC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{9AF9C164-2A9E-4958-BB12-0FEDC40F58EC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
@@ -18,21 +18,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{9AF9C164
 		version.targets = version.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Game.Tests", "HoloCure.Launcher.Game.Tests\HoloCure.Launcher.Game.Tests.csproj", "{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Core", "HoloCure.Launcher.Core\HoloCure.Launcher.Core.csproj", "{337628FA-5197-4268-A9D9-998E23FD2845}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Core.Fluent", "HoloCure.Launcher.Core.Fluent\HoloCure.Launcher.Core.Fluent.csproj", "{937FBD99-31CF-47F6-99FD-2EA33D8999E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Tests", "HoloCure.Launcher.Tests\HoloCure.Launcher.Tests.csproj", "{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomat.Crowdin.LangCodeExtractor", "Tomat.Crowdin.LangCodeExtractor\Tomat.Crowdin.LangCodeExtractor.csproj", "{D1F3E65C-4B3B-45D9-B1BD-94CA76C93ED5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Core.Fluent.SourceGenerator", "HoloCure.Launcher.Core.Fluent.SourceGenerator\HoloCure.Launcher.Core.Fluent.SourceGenerator.csproj", "{E20806ED-569A-4AC5-AA84-91F88F367C31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Generators.LangCodeGenerator", "HoloCure.Launcher.Generators.LangCodeGenerator\HoloCure.Launcher.Generators.LangCodeGenerator.csproj", "{E20806ED-569A-4AC5-AA84-91F88F367C31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCureLauncher", "..\docs\HoloCureLauncher\HoloCureLauncher.csproj", "{9DE6E371-5095-45CA-B1FA-B41F936FC18C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6C13A983-593A-423A-B81C-4DAF827A7D8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F209A430-0412-41A4-845F-9A02CCCD9D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.Launcher.Base", "HoloCure.Launcher.Base\HoloCure.Launcher.Base.csproj", "{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "generators", "generators", "{679A4123-33F9-40CD-A431-DC7054AD9564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,30 +68,6 @@ Global
 		{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B}.Release|iPhone.Build.0 = Release|Any CPU
 		{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|Any CPU.Build.0 = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|iPhone.Build.0 = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{337628FA-5197-4268-A9D9-998E23FD2845}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|iPhone.Build.0 = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{D1F3E65C-4B3B-45D9-B1BD-94CA76C93ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1F3E65C-4B3B-45D9-B1BD-94CA76C93ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F3E65C-4B3B-45D9-B1BD-94CA76C93ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -128,20 +104,32 @@ Global
 		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhone.Build.0 = Release|Any CPU
 		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9DE6E371-5095-45CA-B1FA-B41F936FC18C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|iPhone.Build.0 = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9DE6E371-5095-45CA-B1FA-B41F936FC18C} = {6C13A983-593A-423A-B81C-4DAF827A7D8B}
-		{337628FA-5197-4268-A9D9-998E23FD2845} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
-		{937FBD99-31CF-47F6-99FD-2EA33D8999E9} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
-		{E20806ED-569A-4AC5-AA84-91F88F367C31} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
+		{9AF9C164-2A9E-4958-BB12-0FEDC40F58EC} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
+		{7FE8DB60-6FE7-47D9-ACB4-0E322674CC08} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
 		{AEB3FC89-DC3E-4BC9-9EC7-03B72FC5D849} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
 		{1ADACD09-7BE3-46A1-AEAB-C41E78E8700F} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
-		{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
 		{31D3872C-3A4F-437E-9655-3EF58DD62F46} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
+		{6E26AF65-EC14-42E7-BC7B-D4ACC397BE9B} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
 		{D1F3E65C-4B3B-45D9-B1BD-94CA76C93ED5} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
-		{9AF9C164-2A9E-4958-BB12-0FEDC40F58EC} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
+		{679A4123-33F9-40CD-A431-DC7054AD9564} = {F209A430-0412-41A4-845F-9A02CCCD9D7D}
+		{E20806ED-569A-4AC5-AA84-91F88F367C31} = {679A4123-33F9-40CD-A431-DC7054AD9564}
 	EndGlobalSection
 EndGlobal

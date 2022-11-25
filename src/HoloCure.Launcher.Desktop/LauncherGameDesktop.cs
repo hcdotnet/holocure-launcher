@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using HoloCure.Launcher.Base.Core.Updating;
+using HoloCure.Launcher.Base.Core.Updating.UpdateManagers;
 using HoloCure.Launcher.Desktop.AddOns;
 using HoloCure.Launcher.Desktop.Updater;
 using HoloCure.Launcher.Game;
-using HoloCure.Launcher.Game.Updater;
 using osu.Framework;
 using osu.Framework.Configuration;
 using osu.Framework.Platform;
@@ -40,7 +41,7 @@ public class LauncherGameDesktop : LauncherGame
         sdlWindow.Title = Name;
         sdlWindow.MinSize = sdlWindow.MaxSize = new Size(window_width, window_height);
 
-        // TODO: osu does this, likely an edge case? idk... works on my machine
+        // osu does this, likely an edge case? idk... works on my machine
         Stream icoStream = typeof(LauncherGameDesktop).Assembly.GetManifestResourceStream(typeof(LauncherGameDesktop), launcher_icon)!;
         sdlWindow.SetIconFromStream(icoStream);
     }

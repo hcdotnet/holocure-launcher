@@ -34,8 +34,6 @@ internal class DRPComponent : Component
 
         client.OnError += (_, e) => Logger.Log($"An error occurred with Discord RPC Client: {e.Code} {e.Message}", LoggingTarget.Network);
 
-        // TODO: update with in-game information through patches
-
         client.Initialize();
     }
 
@@ -48,8 +46,6 @@ internal class DRPComponent : Component
     private void updateStatus()
     {
         if (!client.IsInitialized) return;
-
-        // TODO: update with in-game information through patches
 
         client.SetPresence(presence);
     }
