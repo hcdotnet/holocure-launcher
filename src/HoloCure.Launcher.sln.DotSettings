@@ -294,9 +294,13 @@
 	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_OBJECT_AND_COLLECTION_INITIALIZER_STYLE/@EntryValue">CHOP_IF_LONG</s:String>
 	<s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/MakeFieldPrivate/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/UseAutoProperty/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderRegionName/@EntryValue"></s:String>
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright (c) Tomat. Licensed under the GPL v3 License.
+See the LICENSE-GPL file in the repository root for full license text.</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=AABB/@EntryIndexedValue">AABB</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=API/@EntryIndexedValue">API</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=BPM/@EntryIndexedValue">BPM</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=DRP/@EntryIndexedValue">DRP</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=GC/@EntryIndexedValue">GC</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=GL/@EntryIndexedValue">GL</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=GLSL/@EntryIndexedValue">GLSL</s:String>
@@ -486,6 +490,21 @@ private void load()
 {
 	$END$
 }</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Description/@EntryValue">Resolved property (osu!framework dep. inj.</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyname/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyname/Order/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typename/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typename/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Shortcut/@EntryValue">resolved</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Text/@EntryValue">[osu.Framework.Allocation.ResolvedAttribute]
+private $typename$ $propertyname$ { get; set; } = null!;</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/Description/@EntryValue">o!f – new Box { .. }</s:String>

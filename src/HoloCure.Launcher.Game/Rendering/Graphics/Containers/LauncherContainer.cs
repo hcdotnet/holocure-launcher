@@ -2,6 +2,7 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using HoloCure.Launcher.Base.Rendering.Graphics;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
@@ -13,6 +14,9 @@ namespace HoloCure.Launcher.Game.Rendering.Graphics.Containers;
 /// </summary>
 public class LauncherContainer : Container
 {
+    [Resolved]
+    private LauncherColor colors { get; set; } = null!;
+
     protected override Container<Drawable> Content => PanelContent;
 
     public Container<Drawable> PanelContent { get; private set; }
@@ -30,7 +34,7 @@ public class LauncherContainer : Container
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 RelativeSizeAxes = Axes.Both,
-                Colour = LauncherColor.PANEL_COLOR
+                Colour = colors.PanelColor
             },
             PanelContent = new Container
             {

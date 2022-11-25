@@ -40,10 +40,10 @@ public class TestLanguageDisplayList : LauncherTestScene
     }
 
     [BackgroundDependencyLoader]
-    private void load()
+    private void load(LauncherColor colors)
     {
-        static IEnumerable<Drawable> makeContentFromLanguages(Languages languages) =>
-            languages.Stores.Select(x =>
+        IEnumerable<Drawable> makeContentFromLanguages(Languages langs) =>
+            langs.Stores.Select(x =>
             {
                 return new TextFlowContainer(t => t.Font = LauncherFont.GetFont(size: 12, weight: FontWeight.SemiBold))
                 {
@@ -58,19 +58,19 @@ public class TestLanguageDisplayList : LauncherTestScene
                         $"({x.LangCode.Name}/{x.LangCode.Code})",
                         t =>
                         {
-                            t.Colour = LauncherColor.GRAY_C;
+                            t.Colour = colors.GrayC;
                             t.Font = LauncherFont.GetFont(size: 12, weight: FontWeight.Regular);
                         }
                     );
 
-                    if (x.LangCode.Code == languages.DefaultLanguage.Code)
+                    if (x.LangCode.Code == langs.DefaultLanguage.Code)
                     {
                         text.AddText(" ");
                         text.AddText(
                             "[default]",
                             t =>
                             {
-                                t.Colour = LauncherColor.GRAY_8;
+                                t.Colour = colors.Gray8;
                                 t.Font = LauncherFont.GetFont(size: 12, weight: FontWeight.Light);
                             }
                         );

@@ -3,6 +3,7 @@
 
 using HoloCure.Launcher.Base.Rendering.Graphics;
 using HoloCure.Launcher.Game.Rendering.Graphics.Sprites;
+using osu.Framework.Allocation;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Cursor;
@@ -28,6 +29,9 @@ public class LauncherTooltipContainer : TooltipContainer
 
     public class LauncherTooltip : Tooltip
     {
+        [Resolved]
+        private LauncherColor colors { get; set; } = null!;
+
         private readonly Box background;
         private readonly LauncherSpriteText text;
         private bool instantMovement = true;
@@ -50,7 +54,7 @@ public class LauncherTooltipContainer : TooltipContainer
                 {
                     RelativeSizeAxes = Axes.Both,
                     Alpha = 0.9f,
-                    Colour = LauncherColor.GRAY_3
+                    Colour = colors.Gray3
                 },
                 text = new LauncherSpriteText
                 {
@@ -68,7 +72,7 @@ public class LauncherTooltipContainer : TooltipContainer
             if (IsPresent)
             {
                 AutoSizeDuration = 250;
-                background.FlashColour(LauncherColor.Gray(0.4f), 1000, Easing.OutQuint);
+                background.FlashColour(colors.Gray(0.4f), 1000, Easing.OutQuint);
             }
             else
                 AutoSizeDuration = 0;

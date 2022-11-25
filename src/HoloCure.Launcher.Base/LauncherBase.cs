@@ -1,4 +1,5 @@
 using System;
+using HoloCure.Launcher.Base.Rendering.Graphics;
 using osu.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
@@ -24,6 +25,7 @@ public abstract partial class LauncherBase : Game
         dependencies.CacheAs<Game>(this);
         dependencies.CacheAs(this);
         dependencies.CacheAs(BuildInfo);
+        dependencies.Cache(new LauncherColor());
 
         InitializeStores();
 
