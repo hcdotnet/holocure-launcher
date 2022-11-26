@@ -1,5 +1,5 @@
-﻿using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Base.Core.Updating;
+﻿using System;
+using HoloCure.Launcher.Base;
 using HoloCure.Launcher.Game.Rendering.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
@@ -9,18 +9,7 @@ namespace HoloCure.Launcher.Game;
 
 public abstract partial class LauncherGame : LauncherBase
 {
-    private ScreenStack screenStack = null!;
-
-    #region Dependencies
-
-    /// <summary>
-    ///     Set by <see cref="CreateChildDependencies"/>, exposes access to the <see cref="DependencyContainer"/> instance used by this type in the hierarchy.
-    /// </summary>
-    private DependencyContainer dependencies = null!;
-
-    protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
-
-    #endregion
+    private ScreenStack? screenStack;
 
     [BackgroundDependencyLoader]
     private void load()
@@ -36,24 +25,8 @@ public abstract partial class LauncherGame : LauncherBase
     {
         base.LoadComplete();
 
-        // Schedule to be ran after LoadComplete finishes.
-        Schedule(() =>
-        {
-            if (CreateUpdateManager()?.AsDrawable() is { } updateManager)
-            {
-                dependencies.CacheAs(updateManager);
-                Add(updateManager);
-            }
-        });
+        if (screenStack is null) throw new InvalidOperationException("Attempted to complete load of LauncherGame before dependencies were loaded.");
 
         screenStack.Push(new StartUpScreen());
     }
-
-    /// <summary>
-    ///     Creates an <see cref="IUpdateManager"/> instance that will handle notifying the user of *launcher* updates, and applying them if possible.
-    /// </summary>
-    /// <remarks>
-    ///     This has nothing to do with updating installations handled by this launcher.
-    /// </remarks>
-    protected abstract IUpdateManager? CreateUpdateManager();
 }

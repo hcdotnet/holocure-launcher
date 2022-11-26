@@ -67,6 +67,7 @@ public class LauncherTooltipContainer : TooltipContainer
         public override void SetContent(LocalisableString content)
         {
             if (content == text.Text) return;
+
             text.Text = content;
 
             if (IsPresent)

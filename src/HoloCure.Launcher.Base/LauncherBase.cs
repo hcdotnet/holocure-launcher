@@ -41,4 +41,11 @@ public abstract partial class LauncherBase : Game
             }
         });
     }
+
+    protected override void LoadComplete()
+    {
+        base.LoadComplete();
+
+        ScheduleUpdateManager();
+    }
 }

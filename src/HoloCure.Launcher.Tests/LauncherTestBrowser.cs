@@ -1,5 +1,6 @@
 using System;
 using HoloCure.Launcher.Base;
+using HoloCure.Launcher.Base.Core.Updating;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Platform;
@@ -9,6 +10,12 @@ namespace HoloCure.Launcher.Game.Tests;
 
 public class LauncherTestBrowser : LauncherBase
 {
+    protected override void ScheduleUpdateManager()
+    {
+    }
+
+    protected override IUpdateManager? CreateUpdateManager() => null;
+
     protected override void LoadComplete()
     {
         base.LoadComplete();
@@ -26,15 +33,15 @@ public class LauncherTestBrowser : LauncherBase
         host.Window.CursorState |= CursorState.Hidden;
     }
 
-    public override IBuildInfo BuildInfo { get; } = new TestBuildInfo();
+    public override IBuildInfo BuildInfo { get; } = new BrowserBuildInfo();
 
-    private class TestBuildInfo : IBuildInfo
+    private class BrowserBuildInfo : IBuildInfo
     {
         public Version AssemblyVersion => typeof(LauncherTestBrowser).Assembly.GetName()?.Version ?? new Version();
 
         public bool IsDeployedBuild => false;
 
-        public string ReleaseChannel => "test";
+        public string ReleaseChannel => "test-browser";
 
         public string Version => AssemblyVersion.ToString();
     }

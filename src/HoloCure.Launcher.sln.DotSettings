@@ -396,6 +396,22 @@ See the LICENSE-GPL file in the repository root for full license text.</s:String
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ECSharpUseContinuousIndentInsideBracesMigration/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EAlwaysTreatStructAsNotReorderableMigration/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EMigrateBlankLinesAroundFieldToBlankLinesAroundProperty/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Description/@EntryValue">Generates a usable BackgroundDependencyloader method</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Field/=params/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Field/=params/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Shortcut/@EntryValue">bdl</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=138577C7E004C5468081503EC0E4238C/Text/@EntryValue">[osu.Framework.Allocation.BackgroundDependencyLoader]
+private void load($params$)
+{
+    $END$
+}</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=28A2A5FC43E07C488A4BC7430879479E/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=28A2A5FC43E07C488A4BC7430879479E/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=28A2A5FC43E07C488A4BC7430879479E/Description/@EntryValue">o!f – Object Initializer: Anchor&amp;Origin</s:String>
@@ -493,10 +509,14 @@ private void load()
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Description/@EntryValue">Resolved property (osu!framework dep. inj.</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyname/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyname/Order/@EntryValue">1</s:Int64>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typename/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typename/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyname/@KeyIndexDefined">False</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyName/@KeyIndexDefined">True</s:Boolean>
+	
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=propertyName/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typename/@KeyIndexDefined">False</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typeName/@KeyIndexDefined">True</s:Boolean>
+	
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Field/=typeName/Order/@EntryValue">1</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Reformat/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
@@ -504,7 +524,7 @@ private void load()
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Shortcut/@EntryValue">resolved</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7D202E694401F046A3BFAC63CE2B0A44/Text/@EntryValue">[osu.Framework.Allocation.ResolvedAttribute]
-private $typename$ $propertyname$ { get; set; } = null!;</s:String>
+private $typeName$ $propertyName$ { get; set; } = null!;</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CC879477D8841A4CBD724C2DCD249435/Description/@EntryValue">o!f – new Box { .. }</s:String>
