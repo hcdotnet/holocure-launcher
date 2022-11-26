@@ -1,0 +1,8 @@
+# Left-overs from non-orphaned branches
+.github/workflows/todo.yml
+.rider/
+.vscode/
+assets/
+docs/
+Releases/
+src/
