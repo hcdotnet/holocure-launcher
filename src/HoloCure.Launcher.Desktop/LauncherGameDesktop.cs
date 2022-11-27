@@ -17,7 +17,6 @@ namespace HoloCure.Launcher.Desktop;
 public class LauncherGameDesktop : LauncherGame
 {
     private const string launcher_icon = "launcher.ico";
-    private const string launcher_external_update_provider = "LAUNCHER_EXTERNAL_UPDATE_PROVIDER";
 
     // private const int minimum_width = 1000, minimum_height = 600;
     // private const int default_width = 1280, default_height = 720;
@@ -48,26 +47,24 @@ public class LauncherGameDesktop : LauncherGame
 
     protected override IUpdateManager? CreateUpdateManager()
     {
-        string? packageManaged = Environment.GetEnvironmentVariable(launcher_external_update_provider);
-
-        // Use NoActionUpdateManager if the launcher is installed through a package manager or other external installation tool.
-        if (!string.IsNullOrEmpty(packageManaged)) return new NoActionUpdateManager();
-
         switch (RuntimeInfo.OS)
         {
             // Windows uses Clowd.Squirrel (Squirrel.Windows) fork for applying delta patches and other updating techniques.
             case RuntimeInfo.Platform.Windows:
                 Debug.Assert(OperatingSystem.IsWindows());
-                return new SquirrelUpdateManager();
+                return new DesktopUpdateManager(new SquirrelUpdateManager());
 
+            // Only Windows currently features convenient update management.
+            // Non-Windows platforms will have to live with a notification and nothing more, for now.
             case RuntimeInfo.Platform.Linux:
             case RuntimeInfo.Platform.macOS:
+                return new DesktopUpdateManager(new SimpleUpdateManager());
+
+            // These aren't supported.
             case RuntimeInfo.Platform.iOS:
             case RuntimeInfo.Platform.Android:
             default:
-                // Only Windows currently features convenient update management.
-                // Non-Windows platforms will have to live with a notification and nothing more, for now.
-                return new SimpleUpdateManager();
+                throw new PlatformNotSupportedException(RuntimeInfo.OS.ToString());
         }
     }
 
