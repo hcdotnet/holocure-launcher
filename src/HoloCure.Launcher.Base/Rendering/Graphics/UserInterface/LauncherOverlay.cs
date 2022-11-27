@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Tomat. Licensed under the GPL v3 License.
 // See the LICENSE-GPL file in the repository root for full license text.
 
+using System;
 using System.Linq;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 using osu.Framework.Allocation;
@@ -12,7 +13,7 @@ using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
 
-public class LauncherLogoOverlay : CompositeDrawable
+public class LauncherOverlay : CompositeDrawable
 {
     [Resolved]
     private LauncherTheme theme { get; set; } = null!;
@@ -21,6 +22,8 @@ public class LauncherLogoOverlay : CompositeDrawable
     private const int height = 160;
 
     public override bool IsPresent => true;
+
+    public PaneledScreenStack Panel { get; private set; } = null!;
 
     private Sprite logoSprite = null!;
     private LauncherTextFlowContainer titleText = null!;
@@ -35,6 +38,15 @@ public class LauncherLogoOverlay : CompositeDrawable
 
         InternalChildren = new Drawable[]
         {
+            Panel = new PaneledScreenStack
+            {
+                // 0 height and width until animations are done playing so we can resize according to padding.
+                Height = 0,
+                Width = 0,
+
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre
+            },
             logoSprite = new Sprite
             {
                 Height = height,
@@ -118,12 +130,12 @@ public class LauncherLogoOverlay : CompositeDrawable
         }
 
         discordText.AddText("Join our ", nonLinkStyle);
-        discordText.AddLink("Discord", "https://discord.gg/Y8bvvqyFQw", discordStyle);
+        discordText.AddLink("Discord", "https://discord.gg/Y8bvvqyFQw", theme.DiscordColor, theme.FadedLinkColor, discordStyle);
         discordText.AddText(" ", nonLinkStyle);
         discordText.AddIcon(FontAwesome.Brands.Discord, discordStyle);
 
         githubText.AddText("Fork me on ", nonLinkStyle);
-        githubText.AddLink("GitHub", "https://github.com/steviegt6/holocure-launcher", githubStyle);
+        githubText.AddLink("GitHub", "https://github.com/steviegt6/holocure-launcher", theme.GitHubColor, theme.FadedLinkColor, githubStyle);
         githubText.AddText(" ", nonLinkStyle);
         githubText.AddIcon(FontAwesome.Brands.Github, githubStyle);
 
@@ -245,5 +257,16 @@ public class LauncherLogoOverlay : CompositeDrawable
         versionText.FadeIn(duration);
         discordText.FadeIn(duration);
         githubText.FadeIn(duration);
+
+        const float y_padding = 16f;
+        const float x_padding = 16f;
+        float yOffset = Math.Max(titleHeight, Math.Max(versionHeight, Math.Max(discordHeight, githubHeight)));
+
+        // Using BoundingBox here probably isn't the best idea, but it works.
+        Panel.MoveToOffset(new Vector2(0f, -yOffset / 2f));
+        Panel.Height = Parent.BoundingBox.Height - yOffset - y_padding;
+        Panel.Width = Parent.BoundingBox.Width - x_padding;
+
+        Panel.FadeIn(duration);
     }
 }

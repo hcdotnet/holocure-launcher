@@ -25,7 +25,7 @@ public abstract partial class LauncherBase : Game
         dependencies.CacheAs<Game>(this);
         dependencies.CacheAs(this);
         dependencies.CacheAs(BuildInfo);
-        dependencies.Cache(new LauncherTheme());
+        dependencies.CacheAs(new LauncherTheme());
 
         InitializeStores();
 

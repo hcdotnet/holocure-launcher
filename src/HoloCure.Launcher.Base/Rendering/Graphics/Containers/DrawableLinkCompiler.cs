@@ -30,7 +30,7 @@ public class DrawableLinkCompiler : LauncherHoverContainer
     [BackgroundDependencyLoader]
     private void load(LauncherTheme theme)
     {
-        IdleColor = theme.LinkIdleColor;
+        if (IdleColor == default) IdleColor = theme.LinkIdleColor;
     }
 
     protected override IEnumerable<Drawable> EffectTargets => Parts;

@@ -12,9 +12,9 @@ public class LauncherHoverContainer : LauncherClickableContainer
 {
     protected const float FADE_DURATION = 500f;
 
-    protected Colour4 HoverColor { get; set; }
+    public Colour4 HoverColor { get; set; }
 
-    protected Colour4 IdleColor { get; set; } = Colour4.White;
+    public Colour4 IdleColor { get; set; } = Colour4.White;
 
     protected virtual IEnumerable<Drawable> EffectTargets => new[] { Content };
 

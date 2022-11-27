@@ -12,6 +12,8 @@ public class LauncherTheme
 {
     public virtual Colour4 BackgroundColour => Color4.Black;
 
+    public virtual Colour4 ScreenStackBackgroundColor => Gray(0.025f);
+
     public virtual Colour4 LinkIdleColor => Colour4.LightBlue;
 
     public virtual Colour4 TooltipBackgroundColor => Colour4.FromHex("333");
