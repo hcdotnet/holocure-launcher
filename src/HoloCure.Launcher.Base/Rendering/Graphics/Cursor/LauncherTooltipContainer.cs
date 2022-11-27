@@ -29,7 +29,7 @@ public class LauncherTooltipContainer : TooltipContainer
     public class LauncherTooltip : Tooltip
     {
         [Resolved]
-        private LauncherColor colors { get; set; } = null!;
+        private LauncherTheme theme { get; set; } = null!;
 
         private readonly Box background;
         private readonly LauncherSpriteText text;
@@ -53,7 +53,7 @@ public class LauncherTooltipContainer : TooltipContainer
                 {
                     RelativeSizeAxes = Axes.Both,
                     Alpha = 0.9f,
-                    Colour = colors.Gray3
+                    Colour = theme.Gray3
                 },
                 text = new LauncherSpriteText
                 {
@@ -72,7 +72,7 @@ public class LauncherTooltipContainer : TooltipContainer
             if (IsPresent)
             {
                 AutoSizeDuration = 250;
-                background.FlashColour(colors.Gray(0.4f), 1000, Easing.OutQuint);
+                background.FlashColour(theme.Gray(0.4f), 1000, Easing.OutQuint);
             }
             else
                 AutoSizeDuration = 0;

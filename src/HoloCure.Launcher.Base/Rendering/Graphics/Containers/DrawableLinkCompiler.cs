@@ -28,9 +28,9 @@ public class DrawableLinkCompiler : LauncherHoverContainer
     }
 
     [BackgroundDependencyLoader]
-    private void load(LauncherColor colors)
+    private void load(LauncherTheme theme)
     {
-        IdleColor = colors.LinkIdleColor;
+        IdleColor = theme.LinkIdleColor;
     }
 
     protected override IEnumerable<Drawable> EffectTargets => Parts;
