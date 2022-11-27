@@ -24,5 +24,7 @@ public class TestSceneLauncherLogoIndividual : LauncherTestScene
         AddStep("reveal logo (1000ms)", () => logo.ShowLogo(1000D));
         AddStep("reveal title (1000ms)", () => logo.ShowTitle(1000D));
         AddStep("reveal version (1000ms)", () => logo.ShowVersion(1000D, 'v' + buildInfo.AssemblyVersion.ToString() + '-' + buildInfo.ReleaseChannel));
+        AddStep("hide components (1000ms)", () => logo.HideComponents(1000D));
+        AddStep("reveal moved components (1000ms)", () => logo.RevealMovedComponents(1000D));
     }
 }

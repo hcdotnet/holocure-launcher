@@ -24,6 +24,12 @@ public class LauncherTheme
 
     public virtual Colour4 LogoYellowColor => Colour4.FromHex("FFC30E");
 
+    public virtual Colour4 FadedLinkColor => Colour4.Gray;
+
+    public virtual Colour4 DiscordColor => Colour4.FromHex("5865F2");
+
+    public virtual Colour4 GitHubColor => Colour4.White;
+
     public virtual Color4 Gray(float amt) => new(amt, amt, amt, 1f);
 
     public virtual Color4 Gray(byte amt) => new(amt, amt, amt, 255);
