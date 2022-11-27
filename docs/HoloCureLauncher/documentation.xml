@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HoloCureLauncher</name>
+    </assembly>
+    <members>
+        <member name="T:HoloCureLauncher.App">
+            <inheritdoc cref="T:System.Windows.Application"/>
+            <summary>
+                Compiler-generated implementation of <see cref="T:System.Windows.Application"/> used to set the values of properties within the base <see cref="T:System.Windows.Application"/> class. <br />
+                Provides an <see cref="M:HoloCureLauncher.App.InitializeComponent"/> method to achieve the aforementioned property initialization as well as a static program entrypoint.
+            </summary>
+            <remarks>
+                <see cref="T:System.Windows.Application"/>: Encapsulates a Windows Presentation Foundation application.
+            </remarks>
+        </member>
+        <member name="M:HoloCureLauncher.App.InitializeComponent">
+            <summary>
+                Initializes this <see cref="T:System.Windows.Application"/> component. <br />
+                Sets <see cref="P:System.Windows.Application.StartupUri"/> as <see cref="F:System.UriKind.Relative"/> with a value of <c>"MainWindow.xaml"</c>.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.App.Main">
+            <summary>
+                The main program entrypoint. <br />
+                Instantiates a new instance of <see cref="T:HoloCureLauncher.App"/>, runs <see cref="M:HoloCureLauncher.App.InitializeComponent"/> and them <see cref="!:App.Run()"/>.
+            </summary>
+        </member>
+        <member name="T:HoloCureLauncher.Helpers.Downloader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.GameDirectory">
+            <summary>
+                The directory that the game should be downloaded to. Initialized using <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["GameDirectory"]</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.ApiKey">
+            <summary>
+                The itch.io API key. Initialized using <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["ApiKey"]</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.DownloadKey">
+            <summary>
+                The itch.io download key. Initialized using <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["DownloadKey"]</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.GameUrl">
+            <summary>
+                Supposedly the itch.io download URL; goes unused (never referenced in code). Initialized using <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["GameUrl"]</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.GameId">
+            <summary>
+                The itch.io game ID. Set in <see cref="M:HoloCureLauncher.Helpers.Downloader.GetGameId"/>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.DownloadId">
+            <summary>
+                The itch.io download ID. Set in <see cref="M:HoloCureLauncher.Helpers.Downloader.GetVersions"/>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.RootPath">
+            <summary>
+                The value <see cref="M:System.IO.Directory.GetCurrentDirectory"/> returns in the constructor.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath">
+            <summary>
+                The path created from combining <see cref="F:HoloCureLauncher.Helpers.Downloader.RootPath"/> and <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectory"/>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath">
+            <summary>
+                The path created from combining <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> and <c>"version.ini"</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion">
+            <summary>
+                The online <c>updated_at</c> timestamp. Set in <see cref="M:HoloCureLauncher.Helpers.Downloader.GetVersions"/>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.Helpers.Downloader.HttpClient">
+            <summary>
+                The client to make HTTP requests with. Initialized with the default, parameterless constructor.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.#ctor">
+            <summary>
+                Initializes <see cref="F:HoloCureLauncher.Helpers.Downloader.RootPath"/>, <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/>, and <see cref="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath"/>, then invokes <see cref="M:HoloCureLauncher.Helpers.Downloader.GetGameId"/> and <see cref="M:HoloCureLauncher.Helpers.Downloader.GetVersions"/>.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetGameState">
+            <summary>
+                The game state may be one of three values: <c>0</c>, <c>1</c>, or <c>2</c>. <br />
+                If <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> does not point to an existing directory or <see cref="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath"/> does not point to an existing file, <c>1</c> is returned. <br />
+                If <see cref="M:HoloCureLauncher.Helpers.Downloader.CompareVersions"/> returns <see langword="false"/>, <c>2</c> is returned. <br />
+                Otherwise, <c>0</c> is returned.
+            </summary>
+            <returns>The game state, as defined above.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetGameExecutablePath">
+            <summary>
+                Returns the combined path og <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> and <c>"HoloCure.exe"</c>.
+            </summary>
+            <returns>The executable (<c>.exe</c>) game path.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetGameDirectoryPath">
+            <summary>
+                Returns <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/>.
+            </summary>
+            <returns>The directory containing the game.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.InstallGame">
+            <summary>
+                Dispatches calls to other methods in order to handle downloading the game. <br />
+                Four methods are called in quick succession (<see cref="M:HoloCureLauncher.Helpers.Downloader.CreateDirectoryIfNotExists"/>, <see cref="M:HoloCureLauncher.Helpers.Downloader.DownloadGame"/>, <see cref="M:HoloCureLauncher.Helpers.Downloader.ExtractGame"/>, and <see cref="M:HoloCureLauncher.Helpers.Downloader.CreateVersionFile"/>), which each method's return value being checked. If the return value is <see langword="false"/>, this method returns <see langword="false"/>. <br />
+                If all methods complete successfully, this method returns <see langword="true"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.CreateDirectoryIfNotExists">
+            <summary>
+                Checks whether <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> points to an existing directory, and delegates the creation to a <see cref="T:System.Threading.Tasks.Task`1"/> that is awaited if the directory does not yet exist, then returns <see langword="true"/>. <br />
+                If an exception is thrown, the exception is logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> and <see langword="false"/> is returned.
+            </summary>
+            <returns>Whether an exception was thrown (and caught).</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.DownloadGame">
+            <summary>
+                Grabs a UUID from <see cref="M:HoloCureLauncher.Helpers.Downloader.GetUuid"/>, before appending it to the end of <c>"https://api.itch.io/uploads/"</c> + <see cref="F:HoloCureLauncher.Helpers.Downloader.DownloadId"/> + <c>"/download?api_key=</c> + <see cref="F:HoloCureLauncher.Helpers.Downloader.ApiKey"/> + <c>&amp;uuid=</c> (the request URL). <br />
+                Checks whether <see cref="F:HoloCureLauncher.Helpers.Downloader.DownloadKey"/> equals <c>"None"</c>, and if it does not, appends <c>"&amp;download_key_id"</c> + <see cref="F:HoloCureLauncher.Helpers.Downloader.DownloadKey"/> to the request URL. <br />
+                Attempts to make an HTTP request with this built URL, and writes the receives bytes to the combined path of <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> and <c>"HoloCure.zip"</c>, then returns <see langword="true"/>. <br />
+                If an exception is thrown after the URL is built, the exception is logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> and <see langword="false"/> is returned.
+            </summary>
+            <returns>Whether an exception was thrown (and caught).</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.ExtractGame">
+            <summary>
+                Extracts the archive located at the combined path of <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> and <c>"HoloCure.zip"</c> to the <see cref="F:HoloCureLauncher.Helpers.Downloader.GameDirectoryPath"/> directory, then deletes the archive, returns <see langword="true"/>. <br />
+                If an exception is thrown, the exception is logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> and <see langword="false"/> is returned.
+            </summary>
+            <returns>Whether an exception was thrown (and caught).</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.CreateVersionFile">
+            <summary>
+                Asynchronously writes <see cref="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion"/> to the file at <see cref="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath"/>, then returns <see langword="true"/>. <br />
+                If an exception is thrown, the exception is logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> and <see langword="false"/> is returned.
+            </summary>
+            <returns>Whether an exception was thrown (and caught).</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetGameId">
+            <summary>
+                Sets <see cref="F:HoloCureLauncher.Helpers.Downloader.GameId"/> to the value of <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["GameId"]</c>, then returns <see langword="true"/>. <br />
+                If an exception is thrown, the exception is logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> and <see langword="false"/> is returned.
+            </summary>
+            <returns>Whether an exception was thrown (and caught).</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetVersions">
+            <summary>
+                Makes an HTTP request to <c>"https://api.itch.io/games/" + </c><see cref="F:HoloCureLauncher.Helpers.Downloader.GameId"/><c> + "/uploads"</c> with the <see cref="F:HoloCureLauncher.Helpers.Downloader.ApiKey"/> added as a request header (<c>"Authorization"</c>, <c>"Bearer " + </c><see cref="F:HoloCureLauncher.Helpers.Downloader.ApiKey"/>). <br />
+                Once a JSON object is returned (handled as a <see cref="T:System.Collections.Generic.Dictionary`2"/> with a key of <see cref="T:System.String"/> and a value of <see cref="T:System.Object"/>), the <c>"uploads"</c> key is retrieved the first item of this collection (index <c>0</c>) is retrieved. <br />
+                <see cref="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion"/> is set to the value of the <c>"updated_at"</c> property of this item, <see cref="F:HoloCureLauncher.Helpers.Downloader.DownloadId"/> is set to the value of the <c>"id"</c> property of this item. <br />
+                If the HTTP request fails and an error is thrown, or some other error occurs in the process, the exception thrown will be logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/>.
+            </summary>
+            <returns>Always <see langkey="false"/>.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.CompareVersions">
+            <summary>
+                Compares the return value of <see cref="M:HoloCureLauncher.Helpers.Downloader.GetCurrentVersion"/> to the value of <see cref="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion"/>. <br />
+                Before checking equality, <see cref="M:HoloCureLauncher.Helpers.Downloader.GetCurrentVersion"/> is invoked and the end is trimmed (<see cref="M:System.String.TrimEnd"/>). <br />
+                After the value is retrieved, <see cref="M:HoloCureLauncher.Helpers.Downloader.GetCurrentVersion"/>'s return value and <see cref="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion"/> are both logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/> before the comparison is made and returned.
+            </summary>
+            <returns>Whether <see cref="M:HoloCureLauncher.Helpers.Downloader.GetCurrentVersion"/> equals <see cref="F:HoloCureLauncher.Helpers.Downloader.OnlineVersion"/>.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetCurrentVersion">
+            <summary>
+                Checks if <see cref="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath"/> exists, and if it does, reads the contents of the file and returns them. If the file does not exist, returns <c>"NA"</c>.
+            </summary>
+            <returns>The contents of the file pointed to by <see cref="F:HoloCureLauncher.Helpers.Downloader.VersionFilePath"/> if it exists, otherwise <c>"NA"</c>.</returns>
+        </member>
+        <member name="M:HoloCureLauncher.Helpers.Downloader.GetUuid">
+            <summary>
+                Attempts to send a request to <c>"https://api.itch.io/games/" + </c><see cref="F:HoloCureLauncher.Helpers.Downloader.GameId"/><c> + "/download-sessions"</c> with a <see cref="T:System.Net.Http.StringContent"/> of <c>"application/json"</c>, converting the JSON response to a <see cref="T:System.Collections.Generic.Dictionary`2"/> with a <see cref="T:System.String"/> key and <see cref="T:System.Object"/> value. <br />
+                If this request is successful, the <c>"uuid"</c> key is returned. <br />
+                If this request is unsuccessful, the thrown exception will be caught, logged using <see cref="M:System.Diagnostics.Trace.WriteLine(System.String)"/>, and <c>"Failed</c> will be returned.
+            </summary>
+            <returns>The the request is successful, the UUID from the HTTP response, otherwise <c>"Failed</c>.</returns>
+        </member>
+        <member name="T:HoloCureLauncher.MainWindow">
+            <inheritdoc cref="T:System.Windows.Window"/>
+            <inheritdoc cref="T:System.Windows.Markup.IComponentConnector"/>
+            <summary>
+                The main (and only) <see cref="T:System.Windows.Window"/> of this application, providing two buttons to update and launch HoloCure. <br />
+                Stores a <see cref="T:HoloCureLauncher.Helpers.Downloader"/> (<see cref="F:HoloCureLauncher.MainWindow.Downloader"/>) instance and keeps track of the <see cref="T:HoloCureLauncher.MainWindow.LauncherStatus"/> (<see cref="F:HoloCureLauncher.MainWindow.Status"/>).
+            </summary>
+            <remarks>
+                <see cref="T:System.Windows.Window"/>: Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes. <br />
+                <see cref="T:System.Windows.Markup.IComponentConnector"/>: Provides markup compile and tools support for named XAML elements and for attaching event handlers to them.
+            </remarks>
+        </member>
+        <member name="T:HoloCureLauncher.MainWindow.LauncherStatus">
+            <summary>
+                The status of the launcher, indicating game launch availability.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady">
+            <summary>
+                The game is ready to be run. <br />
+                This status (in chronological order): <br />
+                - does not hook anything to the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/>, <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> display "Game is up to date", <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/> display "Play", <br />
+                - and hooks <see cref="M:HoloCureLauncher.MainWindow.PlayButtonCallback(System.Object,System.Windows.RoutedEventArgs)"/> to <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/>'s <see cref="!:Button.Click"/>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.LauncherStatus.Installing">
+            <summary>
+                The game is not installed. <br />
+                This status (in chronological order): <br />
+                - does not hook anything to the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/>, <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> display "Install", <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/> display "Game not installed", <br />
+                - and hooks <see cref="M:HoloCureLauncher.MainWindow.InstallButtonCallback(System.Object,System.Windows.RoutedEventArgs)"/> to <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/>'s <see cref="!:Button.Click"/>.
+            </summary>
+            <remarks>
+                Despite its name, this does not indicate that the game is being installed, just that it is not installed.
+            </remarks>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.LauncherStatus.Updating">
+            <summary>
+                An update is available. <br />
+                This status (in chronological order): <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> display "Update", <br />
+                - hooks <see cref="M:HoloCureLauncher.MainWindow.InstallButtonCallback(System.Object,System.Windows.RoutedEventArgs)"/> to <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/>'s <see cref="!:Button.Click"/>, <br />
+                - makes the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/> display "Play", <br />
+                - and hooks <see cref="M:HoloCureLauncher.MainWindow.PlayButtonCallback(System.Object,System.Windows.RoutedEventArgs)"/> to <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/>'s <see cref="!:Button.Click"/>.
+            </summary>
+            <remarks>
+                Despite its name, this does not indicate that an update is being applied, just that one is available.
+            </remarks>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.LauncherStatus.Failed">
+            <summary>
+                The game installation process failed. <br />
+                This status displays a <see cref="T:System.Windows.MessageBox"/> titled "Warning" and displaying "Failed to update/install. Game can still be launched if installed.". <br />
+                Afterward, if <see cref="F:HoloCureLauncher.MainWindow.GameDirectoryPath"/> exists and <see cref="F:HoloCureLauncher.MainWindow.GameDirectoryPath"/> + <see cref="F:HoloCureLauncher.MainWindow.GameExeName"/> can be located,
+                the status is set to <see cref="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady"/>. <br />
+                If the directory or file does not exist, the status is set to <see cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Installing"/>.
+            </summary>
+            <remarks>
+                See <see cref="M:HoloCureLauncher.Helpers.Downloader.InstallGame"/> for additional context. <br />
+                The <see cref="T:System.Windows.MessageBox"/> has: <br />
+                - an <see cref="F:System.Windows.MessageBoxButton.OK"/> <see cref="T:System.Windows.MessageBoxButton"/>, <br />
+                - a <see cref="F:System.Windows.MessageBoxImage.Warning"/> <see cref="T:System.Windows.MessageBoxImage"/>, <br />
+                - and a <see cref="T:System.Windows.MessageBoxResult"/> of <see cref="F:System.Windows.MessageBoxResult.None"/>.
+            </remarks>
+            <seealso cref="M:HoloCureLauncher.Helpers.Downloader.InstallGame"/>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.Downloader">
+            <summary>
+                The instance of <see cref="T:HoloCureLauncher.Helpers.Downloader"/> used by this instance. Initialized in <see cref="T:HoloCureLauncher.MainWindow"/>'s constructor.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.Status">
+            <summary>
+                The launch/availability status. See the summaries of each enum value for an in-depth description of each state. Initialized in <see cref="T:HoloCureLauncher.MainWindow"/>'s constructor.
+            </summary>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Installing"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Updating"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Failed"/>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.GameDirectoryPath">
+            <summary>
+                The path to the game's directory. Set using <see cref="M:HoloCureLauncher.Helpers.Downloader.GetGameDirectoryPath"/> in <see cref="T:HoloCureLauncher.MainWindow"/>'s constructor.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.GameExecutablePath">
+            <summary>
+                The directory containing the game's executable. Set using <see cref="M:HoloCureLauncher.Helpers.Downloader.GetGameDirectoryPath"/> in <see cref="T:HoloCureLauncher.MainWindow"/>'s constructor.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.GameExeName">
+            <summary>
+                The name of the game's executable. Initialized using <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/><c>["GameExeName"]</c>.
+            </summary>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.PlayButton">
+            <summary>
+                The launcher's play button, which handles launching the game. <br />
+                For an in-depth look at this button's states, see <see cref="T:HoloCureLauncher.MainWindow.LauncherStatus"/>.
+            </summary>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Installing"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Updating"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Failed"/>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow.DownloadButton">
+            <summary>
+                The launcher's play button, which handles installing and updating the game. <br />
+                For an in-depth look at this button's states, see <see cref="T:HoloCureLauncher.MainWindow.LauncherStatus"/>.
+            </summary>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Installing"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Updating"/>
+            <seealso cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Failed"/>
+        </member>
+        <member name="F:HoloCureLauncher.MainWindow._contentLoaded">
+            <summary>
+                Whether <see cref="M:HoloCureLauncher.MainWindow.InitializeComponent"/> has been called or <see cref="M:System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)"/> was invoked with an invalid <c name="connectionId"/>. Used to prevent content being loaded more than once.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.ChangeDownloadButtonState">
+            <summary>
+                Handles updating the states of the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/> and <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> given the current <see cref="F:HoloCureLauncher.MainWindow.Status"/>. <br />
+                For an in-depth look into what state changes are made, see <see cref="T:HoloCureLauncher.MainWindow.LauncherStatus"/>.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.PlayButtonCallback(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+                Starts a new process (<see cref="M:System.Diagnostics.Process.Start(System.Diagnostics.ProcessStartInfo)"/>) and then closes the launcher (<see cref="M:System.Environment.Exit(System.Int32)"/> with a value of 0 passed).
+            </summary>
+            <param name="sender">The event sender. Ignored.</param>
+            <param name="e">The event. Ignored.</param>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.InstallButtonCallback(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+                Changes the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> to display "Installing..." and unhooks <see cref="M:HoloCureLauncher.MainWindow.InstallButtonCallback(System.Object,System.Windows.RoutedEventArgs)"/> from the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/>'s <see cref="!:Button.Click"/> <br />.
+                If the <see cref="F:HoloCureLauncher.MainWindow.Downloader"/> completes <see cref="M:HoloCureLauncher.Helpers.Downloader.InstallGame"/> successfully, the <see cref="F:HoloCureLauncher.MainWindow.Status"/> will be set to <see cref="F:HoloCureLauncher.MainWindow.LauncherStatus.GameReady"/> and <see cref="M:HoloCureLauncher.MainWindow.ChangeDownloadButtonState"/> is invoked. <br />
+                If the <see cref="F:HoloCureLauncher.MainWindow.Downloader"/> doe snot complete <see cref="M:HoloCureLauncher.Helpers.Downloader.InstallGame"/> successfully, the <see cref="F:HoloCureLauncher.MainWindow.Status"/> will be set to <see cref="F:HoloCureLauncher.MainWindow.LauncherStatus.Failed"/> and <see cref="M:HoloCureLauncher.MainWindow.ChangeDownloadButtonState"/> is invoked.
+            </summary>
+            <param name="sender">The event sender. Ignored.</param>
+            <param name="e">The event. Ignored.</param>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.#ctor">
+            <summary>
+                Initializes <see cref="F:HoloCureLauncher.MainWindow.Downloader"/> and <see cref="F:HoloCureLauncher.MainWindow.Status"/>, invokes <see cref="M:HoloCureLauncher.MainWindow.InitializeComponent"/> and <see cref="M:HoloCureLauncher.MainWindow.ChangeDownloadButtonState"/>, then sets <see cref="F:HoloCureLauncher.MainWindow.GameExecutablePath"/> and <see cref="F:HoloCureLauncher.MainWindow.GameDirectoryPath"/>.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.InitializeComponent">
+            <summary>
+                Initializes this <see cref="T:HoloCureLauncher.MainWindow"/> component. <br />
+                Invokes <see cref="M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"/>, passing in <see langword="this"/> and a <see cref="F:System.UriKind.Relative"/> <see cref="T:System.Uri"/> instance with a value of <c>"/HoloCureLauncher;component/mainwindow.xaml"</c>.
+            </summary>
+        </member>
+        <member name="M:HoloCureLauncher.MainWindow.System#Windows#Markup#IComponentConnector#Connect(System.Int32,System.Object)">
+            <inheritdoc />
+            <summary>
+                <paramref cref="!:connectionId"/> is expected to be either a value of <c>1</c> or <c>2</c>. Any other value sets <paramref cref="F:HoloCureLauncher.MainWindow._contentLoaded"/> to true. <br />
+                If <paramref cref="!:connectionId"/> is <c>1</c>, the <see cref="F:HoloCureLauncher.MainWindow.PlayButton"/> is set to the value of the <paramref name="target"/>. <br />
+                If <paramref cref="!:connectionId"/> is <c>2</c>, the <see cref="F:HoloCureLauncher.MainWindow.DownloadButton"/> is set to the value of the <paramref name="target"/>.
+            </summary>
+            <remarks>
+                <see cref="M:System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)"/>: Called by the BamlReader to attach events and Names on compiled content.
+            </remarks>
+            <param name="connectionId">The type of connection.</param>
+            <param name="target">The target object.</param>
+        </member>
+    </members>
+</doc>

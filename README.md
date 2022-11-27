@@ -6,7 +6,7 @@
 
 > An open-source launcher HoloCure!
 
-A powerful, efficient, and open-source launcher for HoloCure, aiming to make your experience even better than before.
+**HoloCure.Launcher** is a feature-rich, free (as in both "freedom" and "free beer"), and open-source launcher for HoloCure, aiming to make your experience even better than before.
 
 ## Goals/Planned Features
 

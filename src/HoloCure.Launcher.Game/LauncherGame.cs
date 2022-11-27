@@ -1,58 +1,32 @@
-﻿using HoloCure.Launcher.Game.Updater;
+﻿using System;
+using HoloCure.Launcher.Base;
+using HoloCure.Launcher.Game.Rendering.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 
-namespace HoloCure.Launcher.Game
+namespace HoloCure.Launcher.Game;
+
+public abstract partial class LauncherGame : LauncherBase
 {
-    public abstract class LauncherGame : LauncherGameBase
+    private ScreenStack? screenStack;
+
+    [BackgroundDependencyLoader]
+    private void load()
     {
-        private ScreenStack screenStack = null!;
+        dependencies.CacheAs(this);
 
-        #region Dependencies
+        // Add your top-level game components here.
+        // A screen stack and sample screen has been provided for convenience, but you can replace it if you don't want to use screens.
+        Child = screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
+    }
 
-        /// <summary>
-        ///     Set by <see cref="CreateChildDependencies"/>, exposes access to the <see cref="DependencyContainer"/> instance used by this type in the hierarchy.
-        /// </summary>
-        private DependencyContainer dependencies = null!;
+    protected override void LoadComplete()
+    {
+        base.LoadComplete();
 
-        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
+        if (screenStack is null) throw new InvalidOperationException("Attempted to complete load of LauncherGame before dependencies were loaded.");
 
-        #endregion
-
-        [BackgroundDependencyLoader]
-        private void load()
-        {
-            dependencies.CacheAs(this);
-
-            // Add your top-level game components here.
-            // A screen stack and sample screen has been provided for convenience, but you can replace it if you don't want to use screens.
-            Child = screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
-        }
-
-        protected override void LoadComplete()
-        {
-            base.LoadComplete();
-
-            // Schedule to be ran after LoadComplete finishes.
-            Schedule(() =>
-            {
-                if (CreateUpdateManager()?.AsDrawable() is { } updateManager)
-                {
-                    dependencies.CacheAs(updateManager);
-                    Add(updateManager);
-                }
-            });
-
-            screenStack.Push(new MainScreen());
-        }
-
-        /// <summary>
-        ///     Creates an <see cref="IUpdateManager"/> instance that will handle notifying the user of *launcher* updates, and applying them if possible.
-        /// </summary>
-        /// <remarks>
-        ///     This has nothing to do with updating installations handled by this launcher.
-        /// </remarks>
-        protected abstract IUpdateManager? CreateUpdateManager();
+        screenStack.Push(new StartUpScreen());
     }
 }

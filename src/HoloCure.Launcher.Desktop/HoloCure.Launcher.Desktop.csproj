@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../shared.targets"/>
+  <Import Project="../shared.targets" />
 
   <PropertyGroup Label="Project">
     <TargetFramework>net6.0</TargetFramework>
@@ -39,16 +39,15 @@
   -->
 
   <ItemGroup Label="Project References">
-    <ProjectReference Include="..\HoloCure.Launcher.Game\HoloCure.Launcher.Game.csproj"/>
+    <ProjectReference Include="..\HoloCure.Launcher.Game\HoloCure.Launcher.Game.csproj" />
   </ItemGroup>
 
   <ItemGroup Label="Package References">
-    <PackageReference Include="Clowd.Squirrel" Version="2.9.42"/>
-    <PackageReference Include="DiscordRichPresence" Version="1.0.175"/>
+    <PackageReference Include="DiscordRichPresence" Version="1.0.175" />
   </ItemGroup>
 
   <ItemGroup Label="Resources">
-    <EmbeddedResource Include="launcher.ico"/>
+    <EmbeddedResource Include="launcher.ico" />
   </ItemGroup>
 
 </Project>
