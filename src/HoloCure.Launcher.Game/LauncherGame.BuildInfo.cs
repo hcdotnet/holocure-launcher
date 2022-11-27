@@ -3,24 +3,23 @@
 
 using System;
 using System.Reflection;
+using HoloCure.Launcher.Base;
 
 namespace HoloCure.Launcher.Game;
 
 partial class LauncherGame
 {
-    public override IBuildInfo BuildInfo { get; } = new GameBuildInfo();
+    protected override IBuildInfo BuildInfo { get; } = new GameBuildInfo();
 
     public class GameBuildInfo : IBuildInfo
     {
-        private const string build_suffix = "";
+        private static string[] split => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion.Split('|');
 
         public virtual Version AssemblyVersion => Assembly.GetEntryAssembly()?.GetName().Version ?? new Version();
 
-        public virtual bool IsDeployedBuild => AssemblyVersion.Major > 0; // Version is 0.x in development builds.
+        public virtual bool IsDeployedBuild => split.Length > 1 && bool.Parse(split[1]);
 
-        public virtual string ReleaseChannel { get; }
-
-        public virtual string Version { get; }
+        public virtual string ReleaseChannel => split[0];
     }
 
     /*

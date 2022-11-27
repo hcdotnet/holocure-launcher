@@ -26,7 +26,7 @@ public class LauncherTestBrowser : LauncherBase
         host.Window.CursorState |= CursorState.Hidden;
     }
 
-    public override IBuildInfo BuildInfo { get; } = new BrowserBuildInfo();
+    protected override IBuildInfo BuildInfo { get; } = new BrowserBuildInfo();
 
     private class BrowserBuildInfo : IBuildInfo
     {
@@ -35,7 +35,5 @@ public class LauncherTestBrowser : LauncherBase
         public bool IsDeployedBuild => false;
 
         public string ReleaseChannel => "test-browser";
-
-        public string Version => AssemblyVersion.ToString();
     }
 }

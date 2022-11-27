@@ -7,16 +7,14 @@ namespace HoloCure.Launcher.Base;
 
 partial class LauncherBase
 {
-    public interface IBuildInfo
-    {
-        Version AssemblyVersion { get; }
+    protected abstract IBuildInfo BuildInfo { get; }
+}
 
-        bool IsDeployedBuild { get; }
+public interface IBuildInfo
+{
+    Version AssemblyVersion { get; }
 
-        string ReleaseChannel { get; }
+    bool IsDeployedBuild { get; }
 
-        string Version { get; }
-    }
-
-    public abstract IBuildInfo BuildInfo { get; }
+    string ReleaseChannel { get; }
 }

@@ -11,6 +11,7 @@ using HoloCure.Launcher.Base.Core.IO.Network.Requests;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Logging;
+using osu.Framework.Platform;
 
 namespace HoloCure.Launcher.Desktop.Components;
 
@@ -26,14 +27,17 @@ internal class UpdaterComponent : Component
     private const string github_releases_endpoint = "https://api.github.com/repos/steviegt6/holocure-launcher/releases";
 
     [Resolved]
-    private LauncherBase.IBuildInfo buildInfo { get; set; } = null!;
+    private IBuildInfo buildInfo { get; set; } = null!;
 
-    protected override void LoadComplete()
+    [Resolved]
+    private GameHost host { get; set; } = null!;
+
+    protected override void LoadAsyncComplete()
     {
-        base.LoadComplete();
+        base.LoadAsyncComplete();
 
         // Check for updates immediately.
-        Schedule(() => Task.Run(checkForUpdatesAsync));
+        Task.Run(checkForUpdatesAsync);
     }
 
     private async Task checkForUpdatesAsync()
@@ -52,17 +56,16 @@ internal class UpdaterComponent : Component
         switch (btn)
         {
             case Buttons.Yes:
-                break;
-
-            case Buttons.No:
+                host.OpenUrlExternally(latest.url);
                 break;
 
             default:
-                throw new ArgumentOutOfRangeException();
+            case Buttons.No:
+                break;
         }
     }
 
-    private static bool canCheckForUpdates(LauncherBase.IBuildInfo buildInfo)
+    private static bool canCheckForUpdates(IBuildInfo buildInfo)
     {
         string? pkgMan = Environment.GetEnvironmentVariable(launcher_external_update_provider);
 
@@ -76,7 +79,7 @@ internal class UpdaterComponent : Component
         return buildInfo.IsDeployedBuild;
     }
 
-    private static async Task<List<(Version version, string url)>> getReleases(LauncherBase.IBuildInfo buildInfo)
+    private static async Task<List<(Version version, string url)>> getReleases(IBuildInfo buildInfo)
     {
         try
         {

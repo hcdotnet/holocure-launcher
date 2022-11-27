@@ -1,6 +1,7 @@
 <Project>
 
   <PropertyGroup>
+    <ReleaseChannel>dev</ReleaseChannel>
     <UnifiedVersion>0.0.0.0</UnifiedVersion>
   </PropertyGroup>
 

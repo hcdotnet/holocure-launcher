@@ -10,7 +10,7 @@ public class LauncherTestScene : TestScene
 
     private class LauncherTestSceneTestRunner : LauncherBase, ITestSceneTestRunner
     {
-        public override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();
+        protected override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();
 
         private TestSceneTestRunner.TestRunner runner = null!;
 
@@ -33,8 +33,6 @@ public class LauncherTestScene : TestScene
             public bool IsDeployedBuild => false;
 
             public string ReleaseChannel => "test-scene";
-
-            public string Version => AssemblyVersion.ToString();
         }
     }
 }
