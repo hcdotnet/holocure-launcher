@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using HoloCure.Launcher.Base.Core.Updating;
-using HoloCure.Launcher.Base.Core.Updating.UpdateManagers;
-using HoloCure.Launcher.Desktop.AddOns;
-using HoloCure.Launcher.Desktop.Updater;
+using HoloCure.Launcher.Desktop.Components;
 using HoloCure.Launcher.Game;
-using osu.Framework;
+using osu.Framework.Allocation;
 using osu.Framework.Configuration;
 using osu.Framework.Platform;
 
@@ -23,6 +18,10 @@ public class LauncherGameDesktop : LauncherGame
 
     private const int window_width = 1300;
     private const int window_height = 800;
+
+    private DependencyContainer dependencies = null!;
+
+    protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
 
     protected override IDictionary<FrameworkSetting, object> GetFrameworkConfigDefaults()
     {
@@ -45,33 +44,11 @@ public class LauncherGameDesktop : LauncherGame
         sdlWindow.SetIconFromStream(icoStream);
     }
 
-    protected override IUpdateManager? CreateUpdateManager()
-    {
-        switch (RuntimeInfo.OS)
-        {
-            // Windows uses Clowd.Squirrel (Squirrel.Windows) fork for applying delta patches and other updating techniques.
-            case RuntimeInfo.Platform.Windows:
-                Debug.Assert(OperatingSystem.IsWindows());
-                return new DesktopUpdateManager(new SquirrelUpdateManager());
-
-            // Only Windows currently features convenient update management.
-            // Non-Windows platforms will have to live with a notification and nothing more, for now.
-            case RuntimeInfo.Platform.Linux:
-            case RuntimeInfo.Platform.macOS:
-                return new DesktopUpdateManager(new SimpleUpdateManager());
-
-            // These aren't supported.
-            case RuntimeInfo.Platform.iOS:
-            case RuntimeInfo.Platform.Android:
-            default:
-                throw new PlatformNotSupportedException(RuntimeInfo.OS.ToString());
-        }
-    }
-
     protected override void LoadComplete()
     {
         base.LoadComplete();
 
         LoadComponentAsync(new DRPComponent());
+        LoadComponentAsync(new UpdaterComponent());
     }
 }

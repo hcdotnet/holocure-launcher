@@ -1,6 +1,5 @@
 using System;
 using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Base.Core.Updating;
 using osu.Framework.Testing;
 
 namespace HoloCure.Launcher.Game.Tests.Visual;
@@ -14,12 +13,6 @@ public class LauncherTestScene : TestScene
         public override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();
 
         private TestSceneTestRunner.TestRunner runner = null!;
-
-        protected override void ScheduleUpdateManager()
-        {
-        }
-
-        protected override IUpdateManager? CreateUpdateManager() => null;
 
         protected override void LoadAsyncComplete()
         {

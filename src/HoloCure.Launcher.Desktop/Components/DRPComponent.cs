@@ -4,7 +4,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Logging;
 
-namespace HoloCure.Launcher.Desktop.AddOns;
+namespace HoloCure.Launcher.Desktop.Components;
 
 internal class DRPComponent : Component
 {

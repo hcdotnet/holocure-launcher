@@ -1,6 +1,5 @@
 using System;
 using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Base.Core.Updating;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Platform;
@@ -10,12 +9,6 @@ namespace HoloCure.Launcher.Game.Tests;
 
 public class LauncherTestBrowser : LauncherBase
 {
-    protected override void ScheduleUpdateManager()
-    {
-    }
-
-    protected override IUpdateManager? CreateUpdateManager() => null;
-
     protected override void LoadComplete()
     {
         base.LoadComplete();
