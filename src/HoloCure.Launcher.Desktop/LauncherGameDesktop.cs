@@ -38,6 +38,7 @@ public class LauncherGameDesktop : LauncherGame
 
         sdlWindow.Title = Name;
         sdlWindow.MinSize = sdlWindow.MaxSize = new Size(window_width, window_height);
+        sdlWindow.Resizable = false;
 
         // osu does this, likely an edge case? idk... works on my machine
         Stream icoStream = typeof(LauncherGameDesktop).Assembly.GetManifestResourceStream(typeof(LauncherGameDesktop), launcher_icon)!;
