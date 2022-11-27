@@ -18,10 +18,7 @@ public class PaneledScreenStack : CompositeDrawable
     private void load(LauncherTheme theme)
     {
         Masking = true;
-        EdgeEffect = new EdgeEffectParameters
-        {
-            Roundness = 10f
-        };
+        CornerRadius = 10f;
 
         InternalChildren = new Drawable[]
         {
