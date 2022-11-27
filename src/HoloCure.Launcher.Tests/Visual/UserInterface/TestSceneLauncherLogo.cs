@@ -13,7 +13,7 @@ public class TestSceneLauncherLogo : LauncherTestScene
     [BackgroundDependencyLoader]
     private void load()
     {
-        var logo = new LauncherLogo();
+        var logo = new LauncherLogoOverlay();
 
         Add(logo);
 

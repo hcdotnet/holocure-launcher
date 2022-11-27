@@ -18,7 +18,7 @@ public abstract partial class LauncherGame : LauncherBase
     {
         dependencies.CacheAs(this);
 
-        var logo = new LauncherLogo();
+        var logo = new LauncherLogoOverlay();
 
         Children = new Drawable[]
         {

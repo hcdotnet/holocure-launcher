@@ -11,7 +11,7 @@ using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
 
-public class LauncherLogo : CompositeDrawable
+public class LauncherLogoOverlay : CompositeDrawable
 {
     private readonly Colour4 logoCyan = Colour4.FromHex("36C6FF");
     private readonly Colour4 logoWhite = Colour4.FromHex("FFFFFF");
@@ -30,14 +30,14 @@ public class LauncherLogo : CompositeDrawable
     [BackgroundDependencyLoader]
     private void load(TextureStore textures)
     {
-        Height = height;
-        Width = width;
+        RelativeSizeAxes = Axes.Both;
 
         InternalChildren = new Drawable[]
         {
             logoSprite = new Sprite
             {
-                RelativeSizeAxes = Axes.Both,
+                Height = height,
+                Width = width,
 
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
