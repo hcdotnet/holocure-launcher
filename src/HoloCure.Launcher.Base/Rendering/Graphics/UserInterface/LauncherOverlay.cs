@@ -230,15 +230,13 @@ public class LauncherOverlay : CompositeDrawable
         // Move up half of the height to counteract centering.
         float titleHeight = titleText.Height;
         float versionHeight = versionText.Height;
-
-        titleText.MoveToOffset(new Vector2(0f, -titleHeight / 2f));
-        versionText.MoveToOffset(new Vector2(0f, -versionHeight / 2f));
-
         float discordHeight = discordText.Height;
         float githubHeight = githubText.Height;
 
-        discordText.MoveToOffset(new Vector2(0f, -discordHeight / 2f));
-        githubText.MoveToOffset(new Vector2(0f, -githubHeight / 2f));
+        titleText.MoveToOffset(new Vector2(0f, (-titleHeight / 2f) - 4f));
+        versionText.MoveToOffset(new Vector2(0f, (-versionHeight / 2f) - 4f));
+        discordText.MoveToOffset(new Vector2(0f, (-discordHeight / 2f) - 4f));
+        githubText.MoveToOffset(new Vector2(0f, (-githubHeight / 2f) - 4f));
 
         // Get widths to appropriately position title (move by half to counteract centering) and version (move to the side)
         float titleWidth = titleText.Children.Sum(x => x.Width);
