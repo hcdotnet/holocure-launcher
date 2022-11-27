@@ -22,13 +22,10 @@ public class LauncherClickableContainer : ClickableContainer, IHasTooltip
     {
         if (AutoSizeAxes != Axes.None)
         {
-            content.RelativeSizeAxes = Axes.Both & ~AutoSizeAxes;
+            content.RelativeSizeAxes = (Axes.Both & ~AutoSizeAxes);
             content.AutoSizeAxes = AutoSizeAxes;
         }
 
-        InternalChildren = new Drawable[]
-        {
-            content
-        };
+        InternalChild = content;
     }
 }

@@ -4,7 +4,6 @@
 using System.Linq;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 using osu.Framework.Allocation;
-using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;

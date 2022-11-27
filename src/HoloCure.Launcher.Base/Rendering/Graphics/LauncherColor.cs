@@ -4,12 +4,15 @@
 // See the LICENCE-MIT file in the repository root for full licence text.
 
 using osu.Framework.Extensions.Color4Extensions;
+using osu.Framework.Graphics;
 using osuTK.Graphics;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics;
 
 public class LauncherColor
 {
+    public virtual Colour4 LinkIdleColor => Colour4.LightBlue;
+
     public virtual Color4 PanelColor => Gray(20);
 
     public virtual Color4 Gray0 => Color4Extensions.FromHex(@"000");
