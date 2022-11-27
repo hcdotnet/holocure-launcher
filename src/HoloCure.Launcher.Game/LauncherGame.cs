@@ -1,6 +1,7 @@
 ﻿using System;
 using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Game.Rendering.Screens;
+using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
@@ -17,8 +18,8 @@ public abstract partial class LauncherGame : LauncherBase
     {
         dependencies.CacheAs(this);
 
-        // Add your top-level game components here.
-        // A screen stack and sample screen has been provided for convenience, but you can replace it if you don't want to use screens.
+        var logo = new LauncherLogo();
+
         Children = new Drawable[]
         {
             // Background
@@ -27,8 +28,11 @@ public abstract partial class LauncherGame : LauncherBase
                 Colour = Colour4.Black,
                 RelativeSizeAxes = Axes.Both,
             },
-            screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both }
+            screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both },
+            logo
         };
+
+        dependencies.CacheAs(logo);
     }
 
     protected override void LoadComplete()

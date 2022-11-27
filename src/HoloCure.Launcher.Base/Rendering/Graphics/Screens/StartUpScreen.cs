@@ -5,7 +5,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 
-namespace HoloCure.Launcher.Game.Rendering.Screens;
+namespace HoloCure.Launcher.Base.Rendering.Graphics.Screens;
 
 public class StartUpScreen : Screen
 {
