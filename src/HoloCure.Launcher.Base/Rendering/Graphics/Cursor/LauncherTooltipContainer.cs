@@ -53,7 +53,7 @@ public class LauncherTooltipContainer : TooltipContainer
                 {
                     RelativeSizeAxes = Axes.Both,
                     Alpha = 0.9f,
-                    Colour = theme.Gray3
+                    Colour = theme.TooltipBackgroundColor
                 },
                 text = new LauncherSpriteText
                 {

@@ -8,7 +8,7 @@ namespace HoloCure.Launcher.Base;
 
 partial class LauncherBase
 {
-    protected override Container<Drawable> Content => content;
+    protected override Container<Drawable>? Content => content;
 
     private Container? content;
 }

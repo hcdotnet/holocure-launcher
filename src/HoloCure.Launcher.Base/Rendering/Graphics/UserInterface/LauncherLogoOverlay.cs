@@ -14,10 +14,8 @@ namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
 
 public class LauncherLogoOverlay : CompositeDrawable
 {
-    private readonly Colour4 logoCyan = Colour4.FromHex("36C6FF");
-    private readonly Colour4 logoWhite = Colour4.FromHex("FFFFFF");
-    private readonly Colour4 logoPink = Colour4.FromHex("FB83B4");
-    private readonly Colour4 logoYellow = Colour4.FromHex("FFC30E");
+    [Resolved]
+    private LauncherTheme theme { get; set; } = null!;
 
     private const int width = 160;
     private const int height = 160;
@@ -89,7 +87,7 @@ public class LauncherLogoOverlay : CompositeDrawable
             x =>
             {
                 x.Font = LauncherFont.Default.With(size: 20f);
-                x.Colour = logoCyan;
+                x.Colour = theme.LogoCyanColor;
             }
         );
         titleText.AddText(
@@ -97,7 +95,7 @@ public class LauncherLogoOverlay : CompositeDrawable
             x =>
             {
                 x.Font = LauncherFont.Default.With(size: 20f);
-                x.Colour = logoWhite;
+                x.Colour = theme.LogoWhiteColor;
             }
         );
         titleText.AddText(
@@ -105,7 +103,7 @@ public class LauncherLogoOverlay : CompositeDrawable
             x =>
             {
                 x.Font = LauncherFont.Default.With(size: 20f);
-                x.Colour = logoPink;
+                x.Colour = theme.LogoPinkColor;
             }
         );
         titleText.FadeIn(duration);
@@ -119,7 +117,7 @@ public class LauncherLogoOverlay : CompositeDrawable
             x =>
             {
                 x.Font = LauncherFont.Default.With(size: 16f);
-                x.Colour = logoYellow;
+                x.Colour = theme.LogoYellowColor;
             }
         );
         versionText.FadeIn(duration);

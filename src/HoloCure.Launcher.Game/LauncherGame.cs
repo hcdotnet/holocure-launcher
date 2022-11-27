@@ -1,6 +1,6 @@
 ﻿using System;
 using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+using HoloCure.Launcher.Base.Rendering.Graphics;
 using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
@@ -14,7 +14,7 @@ public abstract partial class LauncherGame : LauncherBase
     private ScreenStack? screenStack;
 
     [BackgroundDependencyLoader]
-    private void load()
+    private void load(LauncherTheme theme)
     {
         dependencies.CacheAs(this);
 
@@ -25,7 +25,7 @@ public abstract partial class LauncherGame : LauncherBase
             // Background
             new Box
             {
-                Colour = Colour4.Black,
+                Colour = theme.BackgroundColour,
                 RelativeSizeAxes = Axes.Both,
             },
             screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both },
@@ -41,6 +41,6 @@ public abstract partial class LauncherGame : LauncherBase
 
         if (screenStack is null) throw new InvalidOperationException("Attempted to complete load of LauncherGame before dependencies were loaded.");
 
-        screenStack.Push(new StartUpScreen());
+        // screenStack.Push(new StartUpScreen());
     }
 }

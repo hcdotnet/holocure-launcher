@@ -10,7 +10,19 @@ namespace HoloCure.Launcher.Base.Rendering.Graphics;
 
 public class LauncherTheme
 {
+    public virtual Colour4 BackgroundColour => Color4.Black;
+
     public virtual Colour4 LinkIdleColor => Colour4.LightBlue;
+
+    public virtual Colour4 TooltipBackgroundColor => Colour4.FromHex("333");
+
+    public virtual Colour4 LogoCyanColor => Colour4.FromHex("36C6FF");
+
+    public virtual Colour4 LogoWhiteColor => Colour4.FromHex("FFFFFF");
+
+    public virtual Colour4 LogoPinkColor => Colour4.FromHex("FB83B4");
+
+    public virtual Colour4 LogoYellowColor => Colour4.FromHex("FFC30E");
 
     public virtual Color4 Gray(float amt) => new(amt, amt, amt, 1f);
 
