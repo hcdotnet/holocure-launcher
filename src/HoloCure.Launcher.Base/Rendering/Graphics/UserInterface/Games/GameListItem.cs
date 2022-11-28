@@ -53,9 +53,9 @@ public class GameListItem : CompositeDrawable
             }
         };
 
-        hoverColor = themes.Gray(0.075f);
-        idleColor = themes.Gray(0.05f);
-        selectedColor = themes.Gray(0.1f);
+        hoverColor = themes.Gray(0.2f);
+        idleColor = themes.Gray(0.1f);
+        selectedColor = themes.Gray(0.35f);
 
         Height = 40f;
         Width = 200f;
