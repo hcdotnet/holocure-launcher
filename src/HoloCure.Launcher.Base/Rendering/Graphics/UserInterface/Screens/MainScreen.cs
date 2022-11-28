@@ -10,7 +10,7 @@ using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 
-public class AboutScreen : LauncherScreen
+public class MainScreen : LauncherScreen
 {
     [BackgroundDependencyLoader]
     private void load()
@@ -25,7 +25,7 @@ public class AboutScreen : LauncherScreen
             Anchor = Anchor.Centre,
         };
 
-        tempText.AddText("TEMP TEXT BUT ABOUT SCREEN EDITION ", st => st.Font = FontUsage.Default);
+        tempText.AddText("Placeholder text to see that this screen is present ", st => st.Font = FontUsage.Default);
         tempText.AddIcon(FontAwesome.Solid.Skull, st => st.Size = new Vector2(20f));
 
         AddInternal(tempText);

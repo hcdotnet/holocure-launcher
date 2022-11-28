@@ -4,6 +4,7 @@
 using System;
 using System.Linq;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
@@ -273,6 +274,8 @@ public class LauncherOverlay : CompositeDrawable
 
         Panel.FadeIn(duration);
 
+        Scheduler.AddDelayed(() => Panel.Stack.Push(new MainScreen()), duration + 100D);
+
         #endregion
 
         #region About button
@@ -283,13 +286,17 @@ public class LauncherOverlay : CompositeDrawable
             Height = 35f,
 
             Anchor = Anchor.TopRight,
-            Origin = Anchor.Centre
+            Origin = Anchor.Centre,
+
+            Alpha = 0f
         };
 
         aboutButton.MoveToOffset(new Vector2(-x_padding, y_padding));
         aboutButton.MoveToOffset(new Vector2(-aboutButton.Width / 2f, aboutButton.Height / 2f));
 
         AddInternal(aboutButton);
+
+        aboutButton.FadeIn(duration);
 
         #endregion
     }
