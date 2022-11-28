@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Tomat. Licensed under the GPL v3 License.
 // See the LICENSE-GPL file in the repository root for full license text.
 
+using System.Linq;
 using HoloCure.Launcher.Base.Games;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
@@ -78,6 +79,7 @@ public class MainScreen : LauncherScreen
         };
 
         gameProvider.Games.Value.ForEach(x => flowContainer.Add(x.MakeListItem()));
+        gameProvider.SelectedGame.Value = gameProvider.Games.Value.First();
     }
 
     protected override void Update()
