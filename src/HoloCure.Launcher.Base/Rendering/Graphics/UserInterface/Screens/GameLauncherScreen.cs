@@ -7,6 +7,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
+using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 
@@ -29,7 +30,9 @@ public class GameLauncherScreen : LauncherScreen
                 Origin = Anchor.TopCentre,
                 Anchor = Anchor.TopCentre,
 
-                Texture = textures.Get(game.GameTitlePath)
+                Texture = textures.Get(game.GameTitlePath),
+
+                Position = new Vector2(0f, 24f)
             }
         };
     }
