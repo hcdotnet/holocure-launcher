@@ -1,7 +1,10 @@
-﻿using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Games;
+﻿using System;
+using System.Threading.Tasks;
+using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Games;
 using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Localisation;
+using osu.Framework.Platform;
 using osu.Framework.Screens;
 
 namespace HoloCure.Launcher.Base.Games;
@@ -22,4 +25,8 @@ public abstract class Game : CompositeDrawable
     public virtual GameListItem MakeListItem() => new(this);
 
     public virtual Screen GetOrCreateScreen() => GameScreen ??= new GameLauncherScreen(this);
+
+    public abstract Task InstallOrPlayGame(Action<GameAlert> onAlert, Storage storage);
+
+    public abstract Task UpdateGame(Action<GameAlert> onAlert, Storage storage);
 }
