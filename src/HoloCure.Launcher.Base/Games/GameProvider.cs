@@ -17,7 +17,6 @@ public class GameProvider
 
     public GameProvider()
     {
-        // ReSharper disable once ConvertClosureToMethodGroup
         Games = new Lazy<List<Game>>(() => GetGames().ToList());
     }
 
