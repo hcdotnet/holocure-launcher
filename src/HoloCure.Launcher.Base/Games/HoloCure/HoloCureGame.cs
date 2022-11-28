@@ -35,10 +35,11 @@ public class HoloCureGame : Game
         onAlert(GameAlert.CheckingInstallation);
 
         string hcDir = Path.Combine("Games", "HoloCure");
+        string gamDir = Path.Combine(hcDir, "game");
 
         // If directory does not exist or no executable.
         // Executable checking will need to change once other platforms are supported.
-        if (!storage.ExistsDirectory(hcDir) || !storage.GetFiles(hcDir).Any(x => x.EndsWith(".exe")))
+        if (!storage.ExistsDirectory(hcDir) || !storage.GetFiles(gamDir).Any(x => x.EndsWith(".exe")))
         {
             onAlert(GameAlert.InstallationNotFoundInstallingGame);
             await installGame(storage, hcDir);
@@ -47,7 +48,7 @@ public class HoloCureGame : Game
         onAlert(GameAlert.InstallationFoundStartingGame);
 
         // See earlier comments for executable checking.
-        string executable = storage.GetFiles(Path.Combine(hcDir, "game")).First(x => x.EndsWith(".exe"));
+        string executable = storage.GetFiles(gamDir).First(x => x.EndsWith(".exe"));
         var proc = Process.Start(new ProcessStartInfo
         {
             FileName = storage.GetFullPath(executable),
