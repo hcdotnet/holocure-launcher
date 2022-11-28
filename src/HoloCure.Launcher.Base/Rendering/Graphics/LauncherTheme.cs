@@ -32,6 +32,10 @@ public class LauncherTheme
 
     public virtual Colour4 GitHubColor => Colour4.White;
 
+    public virtual Colour4 ReturnButtonIdleColour => Gray(0.2f);
+
+    public virtual Colour4 ReturnButtonHoverColour => Gray(0.3f);
+
     public virtual Color4 Gray(float amt) => new(amt, amt, amt, 1f);
 
     public virtual Color4 Gray(byte amt) => new(amt, amt, amt, 255);

@@ -88,7 +88,7 @@ public class AboutButton : LauncherClickableContainer
         if (Stack.CurrentScreen is null) return base.OnClick(e);
 
         // If the current screen is already the About screen, don't do anything.
-        if (Stack.CurrentScreen is not AboutScreen) Stack.Push(new AboutScreen());
+        if (Stack.CurrentScreen is not AboutScreen) Stack.Push(new AboutScreen(Stack));
 
         return base.OnClick(e);
     }
