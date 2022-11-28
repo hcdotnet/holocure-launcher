@@ -84,7 +84,8 @@ public class AboutButton : LauncherClickableContainer
 
     protected override bool OnClick(ClickEvent e)
     {
-        Stack.Push(new AboutScreen());
+        // Testing might be useful for this.
+        if (Stack.CurrentScreen is not AboutScreen) Stack.Push(new AboutScreen());
 
         return base.OnClick(e);
     }
