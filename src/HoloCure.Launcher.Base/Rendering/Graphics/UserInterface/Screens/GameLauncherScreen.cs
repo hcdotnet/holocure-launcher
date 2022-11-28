@@ -47,8 +47,10 @@ public class GameLauncherScreen : LauncherScreen
             },
             playButton = new ActionableStaticButton
             {
-                Origin = Anchor.BottomCentre,
+                Origin = Anchor.Centre,
                 Anchor = Anchor.Centre,
+
+                Position = new Vector2(0f, -30f),
 
                 Action = () =>
                 {
@@ -99,8 +101,10 @@ public class GameLauncherScreen : LauncherScreen
             },
             updateButton = new ActionableStaticButton
             {
-                Origin = Anchor.TopCentre,
+                Origin = Anchor.Centre,
                 Anchor = Anchor.Centre,
+
+                Position = new Vector2(0f, 30f),
 
                 Action = () =>
                 {
