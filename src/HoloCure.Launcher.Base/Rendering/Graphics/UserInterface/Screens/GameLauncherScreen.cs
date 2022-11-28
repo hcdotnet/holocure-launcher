@@ -124,7 +124,14 @@ public class GameLauncherScreen : LauncherScreen
                             case GameAlert.NoUpdatesFound:
                                 updateButton.UpdateText("No updates found.");
                                 Schedule(() => { playButton.Enabled.Value = true; });
-                                Scheduler.AddDelayed(() => updateButton.Enabled.Value = true, 10 * 1000);
+                                Scheduler.AddDelayed(
+                                    () =>
+                                    {
+                                        updateButton.Enabled.Value = true;
+                                        updateButton.UpdateText("Update");
+                                    },
+                                    5 * 1000
+                                );
                                 break;
 
                             case GameAlert.UpdatingGame:
@@ -134,7 +141,14 @@ public class GameLauncherScreen : LauncherScreen
                             case GameAlert.GameUpdated:
                                 updateButton.UpdateText("Update installed!");
                                 Schedule(() => { playButton.Enabled.Value = true; });
-                                Scheduler.AddDelayed(() => updateButton.Enabled.Value = true, 10 * 1000);
+                                Scheduler.AddDelayed(
+                                    () =>
+                                    {
+                                        updateButton.Enabled.Value = true;
+                                        updateButton.UpdateText("Update");
+                                    },
+                                    5 * 1000
+                                );
                                 break;
 
                             case GameAlert.CheckingInstallation:
