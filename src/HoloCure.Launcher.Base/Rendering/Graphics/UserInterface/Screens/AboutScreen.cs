@@ -25,24 +25,23 @@ public class AboutScreen : LauncherScreen
     }
 
     [BackgroundDependencyLoader]
-    private void load()
+    private void load(LauncherTheme theme, IBuildInfo buildInfo)
     {
-        var tempText = new LauncherTextFlowContainer
+        var aboutText = new LinkFlowContainer
         {
             RelativeSizeAxes = Axes.X,
             AutoSizeAxes = Axes.Y,
 
-            TextAnchor = Anchor.Centre,
+            TextAnchor = Anchor.BottomCentre,
             Origin = Anchor.Centre,
             Anchor = Anchor.Centre,
         };
 
-        tempText.AddText("TEMP TEXT BUT ABOUT SCREEN EDITION ", st => st.Font = FontUsage.Default);
-        tempText.AddIcon(FontAwesome.Solid.Skull, st => st.Size = new Vector2(20f));
+        initializeAboutText(aboutText, theme, buildInfo);
 
         InternalChildren = new Drawable[]
         {
-            tempText,
+            aboutText,
             new ReturnButton(stack)
             {
                 Origin = Anchor.Centre,
@@ -51,6 +50,93 @@ public class AboutScreen : LauncherScreen
                 Position = new Vector2(0f, -60f)
             }
         };
+    }
+
+    private static void initializeAboutText(LinkFlowContainer aboutText, LauncherTheme theme, IBuildInfo buildInfo)
+    {
+        // God how is this going to be localized?
+
+        void holocureStyle(SpriteText x)
+        {
+            x.Font = LauncherFont.Default.With(size: 36f);
+            x.Colour = theme.LogoCyanColor;
+        }
+
+        void dotStyle(SpriteText x)
+        {
+            x.Font = LauncherFont.Default.With(size: 36f);
+            x.Colour = theme.LogoWhiteColor;
+        }
+
+        void launcherStyle(SpriteText x)
+        {
+            x.Font = LauncherFont.Default.With(size: 36f);
+            x.Colour = theme.LogoPinkColor;
+        }
+
+        void defaultStyle(SpriteText x)
+        {
+            x.Font = LauncherFont.Default.With(size: 20f);
+            x.Colour = theme.FadedLinkColor;
+        }
+
+        void versionStyle(SpriteText x)
+        {
+            defaultStyle(x);
+            x.Colour = theme.LogoYellowColor;
+        }
+
+        void heartStyle(SpriteText x)
+        {
+            defaultStyle(x);
+            x.Colour = theme.HeartColor;
+        }
+
+        void linkStyle(SpriteText x)
+        {
+            defaultStyle(x);
+            x.Colour = theme.LogoWhiteColor;
+        }
+
+        aboutText.AddText("HoloCure", holocureStyle);
+        aboutText.AddText(".", dotStyle);
+        aboutText.AddText("Launcher ", launcherStyle);
+        aboutText.AddText('v' + buildInfo.AssemblyVersion.ToString() + '-' + buildInfo.ReleaseChannel, versionStyle);
+        aboutText.NewParagraph();
+
+        aboutText.AddText("Kindly crafted with ", defaultStyle);
+        aboutText.AddIcon(FontAwesome.Solid.Heart, heartStyle);
+        aboutText.AddText(" by myself (", defaultStyle);
+        aboutText.AddLink("Tomat", "https://github.com/steviegt6", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(") and ", defaultStyle);
+        aboutText.AddLink("any contributions", "https://github.com/steviegt6/holocure-launcher/contributors", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(".", defaultStyle);
+        aboutText.NewParagraph();
+
+        aboutText.NewParagraph();
+        aboutText.NewParagraph();
+
+        aboutText.AddLink("HoloCure.Launcher", "https://github.com/steviegt6/holocure-launcher", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(" is a feature-rich, ", defaultStyle);
+        aboutText.AddLink("free", "https://www.gnu.org/philosophy/free-sw.html", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(" (as in both \"", defaultStyle);
+        aboutText.AddLink("free speech", "https://en.wikipedia.org/wiki/Gratis_versus_libre#Libre", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText("\" and \"", defaultStyle);
+        aboutText.AddLink("free beer", "https://en.wikipedia.org/wiki/Gratis_versus_libre#Gratis", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText("\") alternative to the regular proprietary HoloCure Launcher.", defaultStyle);
+        aboutText.NewParagraph();
+
+        aboutText.NewParagraph();
+        aboutText.NewParagraph();
+
+        aboutText.AddText("This project is licensed under the ", defaultStyle);
+        aboutText.AddLink("GNU General Public License", "https://www.gnu.org/licenses/gpl-3.0.en.html", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(", with bits of code sub-licensed under the MIT License.", defaultStyle);
+        aboutText.NewParagraph();
+
+        aboutText.AddText("Copies of these licenses may be found in the root directory of the ", defaultStyle);
+        aboutText.AddLink("HoloCure.Launcher repository", "https://github.com/steviegt6/holocure-launcher", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
+        aboutText.AddText(".", defaultStyle);
     }
 
     private class ReturnButton : LauncherHoverContainer

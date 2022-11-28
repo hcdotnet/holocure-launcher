@@ -36,6 +36,8 @@ public class LauncherTheme
 
     public virtual Colour4 ReturnButtonHoverColour => Gray(0.3f);
 
+    public virtual Colour4 HeartColor => Colour4.Salmon;
+
     public virtual Color4 Gray(float amt) => new(amt, amt, amt, 1f);
 
     public virtual Color4 Gray(byte amt) => new(amt, amt, amt, 255);
