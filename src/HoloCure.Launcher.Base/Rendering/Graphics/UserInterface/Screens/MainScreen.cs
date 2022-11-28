@@ -1,38 +1,90 @@
 ﻿// Copyright (c) Tomat. Licensed under the GPL v3 License.
 // See the LICENSE-GPL file in the repository root for full license text.
 
+using HoloCure.Launcher.Base.Games;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Shapes;
 using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 
 public class MainScreen : LauncherScreen
 {
-    [BackgroundDependencyLoader]
-    private void load()
-    {
-        var tempText = new LauncherTextFlowContainer
-        {
-            RelativeSizeAxes = Axes.X,
-            AutoSizeAxes = Axes.Y,
+    private LauncherScrollContainer scrollContainer = null!;
+    private Container scrollBackground = null!;
 
-            TextAnchor = Anchor.Centre,
-            Origin = Anchor.Centre,
-            Anchor = Anchor.Centre,
+    [BackgroundDependencyLoader]
+    private void load(GameProvider gameProvider, LauncherTheme theme)
+    {
+        var flowContainer = new FillFlowContainer
+        {
+            Direction = FillDirection.Vertical,
+
+            AutoSizeAxes = Axes.Y,
+            RelativeSizeAxes = Axes.X,
+
+            Spacing = new Vector2(0, 2f),
         };
 
-        tempText.AddText("Placeholder text to see that this screen is present ", st => st.Font = FontUsage.Default);
-        tempText.AddIcon(FontAwesome.Solid.Skull, st => st.Size = new Vector2(20f));
+        scrollContainer = new LauncherScrollContainer
+        {
+            // Height set in Update.
+            Width = 200f,
 
-        AddInternal(tempText);
+            Anchor = Anchor.Centre,
+            Origin = Anchor.Centre,
+
+            Position = new Vector2(0f, -8f),
+
+            Child = flowContainer
+        };
 
         InternalChildren = new Drawable[]
         {
-            tempText
+            new Container
+            {
+                RelativeSizeAxes = Axes.Y,
+                AutoSizeAxes = Axes.X,
+
+                Anchor = Anchor.CentreLeft,
+                Origin = Anchor.CentreLeft,
+
+                Position = new Vector2(8f),
+
+                Children = new Drawable[]
+                {
+                    scrollBackground = new Container
+                    {
+                        Masking = true,
+                        CornerRadius = 10f,
+
+                        // Height set in Update.
+                        Width = 216f,
+
+                        Child = new Box
+                        {
+                            RelativeSizeAxes = Axes.Both,
+
+                            Colour = theme.Gray(0.05f)
+                        },
+                    },
+                    scrollContainer
+                }
+            }
         };
+
+        gameProvider.Games.Value.ForEach(x => flowContainer.Add(x.MakeListItem()));
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        scrollBackground.Height = scrollBackground.Parent.BoundingBox.Height - 16f;
+        scrollContainer.Height = scrollBackground.BoundingBox.Height - 16f;
     }
 }
