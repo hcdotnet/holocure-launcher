@@ -84,7 +84,10 @@ public class AboutButton : LauncherClickableContainer
 
     protected override bool OnClick(ClickEvent e)
     {
-        // Testing might be useful for this.
+        // Just to be safe, in case someone clicks the About button before the overlay has properly transitioned.
+        if (Stack.CurrentScreen is null) return base.OnClick(e);
+
+        // If the current screen is already the About screen, don't do anything.
         if (Stack.CurrentScreen is not AboutScreen) Stack.Push(new AboutScreen());
 
         return base.OnClick(e);
