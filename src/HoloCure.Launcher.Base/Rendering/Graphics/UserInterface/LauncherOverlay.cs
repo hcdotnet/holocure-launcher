@@ -214,6 +214,8 @@ public class LauncherOverlay : CompositeDrawable
 
     public void RevealMovedComponents(double duration)
     {
+        #region Text
+
         // Position to bottom-left corner.
         titleText.Anchor = Anchor.BottomLeft;
         versionText.Anchor = Anchor.BottomLeft;
@@ -256,6 +258,10 @@ public class LauncherOverlay : CompositeDrawable
         discordText.FadeIn(duration);
         githubText.FadeIn(duration);
 
+        #endregion
+
+        #region Panel
+
         const float y_padding = 16f;
         const float x_padding = 16f;
         float yOffset = Math.Max(titleHeight, Math.Max(versionHeight, Math.Max(discordHeight, githubHeight)));
@@ -266,5 +272,25 @@ public class LauncherOverlay : CompositeDrawable
         Panel.Width = Parent.BoundingBox.Width - x_padding;
 
         Panel.FadeIn(duration);
+
+        #endregion
+
+        #region About button
+
+        var aboutButton = new AboutButton
+        {
+            Width = 35f,
+            Height = 35f,
+
+            Anchor = Anchor.TopRight,
+            Origin = Anchor.Centre
+        };
+
+        aboutButton.MoveToOffset(new Vector2(-x_padding, y_padding));
+        aboutButton.MoveToOffset(new Vector2(-aboutButton.Width / 2f, aboutButton.Height / 2f));
+
+        AddInternal(aboutButton);
+
+        #endregion
     }
 }
