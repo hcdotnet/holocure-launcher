@@ -3,13 +3,14 @@
 
 using System;
 using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
+using osu.Framework.Screens;
 using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
@@ -22,8 +23,15 @@ public class AboutButton : LauncherClickableContainer
         set => throw new InvalidOperationException("Cannot set TooltipText of AboutButton.");
     }
 
+    public ScreenStack Stack { get; }
+
+    public AboutButton(ScreenStack stack)
+    {
+        Stack = stack;
+    }
+
     [BackgroundDependencyLoader]
-    private void load(TextureStore textures, LauncherTheme theme)
+    private void load(LauncherTheme theme)
     {
         Masking = true;
         CornerRadius = 10f;
@@ -72,5 +80,12 @@ public class AboutButton : LauncherClickableContainer
         this.ScaleTo(1f, 250D, Easing.OutExpo);
 
         base.OnHoverLost(e);
+    }
+
+    protected override bool OnClick(ClickEvent e)
+    {
+        Stack.Push(new AboutScreen());
+
+        return base.OnClick(e);
     }
 }

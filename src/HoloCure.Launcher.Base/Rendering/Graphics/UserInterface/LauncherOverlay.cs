@@ -277,7 +277,7 @@ public class LauncherOverlay : CompositeDrawable
 
         #region About button
 
-        var aboutButton = new AboutButton
+        var aboutButton = new AboutButton(Panel.Stack)
         {
             Width = 35f,
             Height = 35f,
