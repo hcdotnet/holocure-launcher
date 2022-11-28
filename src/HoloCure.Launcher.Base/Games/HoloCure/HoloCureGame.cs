@@ -70,7 +70,7 @@ public class HoloCureGame : Game
         string versionPath = Path.Combine(hcDir, "uat");
         string currVersion = storage.Exists(versionPath) ? await File.ReadAllTextAsync(storage.GetFullPath(versionPath)) : "";
 
-        if (updatedAt == currVersion)
+        if (updatedAt == currVersion.Trim())
         {
             onAlert(GameAlert.NoUpdatesFound);
             return;
