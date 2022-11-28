@@ -28,7 +28,7 @@ public class HoloCureGame : Game
 
     public override string GameIconPath => "Games/HoloCure/Icon";
 
-    public override async Task InstallOrPlayGame(Action<GameAlert> onAlert, Storage storage)
+    public override async Task InstallOrPlayGameAsync(Action<GameAlert> onAlert, Storage storage)
     {
         // Eventually make paths configurable - settings and profiles...
 
@@ -48,7 +48,7 @@ public class HoloCureGame : Game
 
         // See earlier comments for executable checking.
         string executable = storage.GetFiles(Path.Combine(hcDir, "game")).First(x => x.EndsWith(".exe"));
-        Process.Start(new ProcessStartInfo
+        var proc = Process.Start(new ProcessStartInfo
         {
             FileName = storage.GetFullPath(executable),
             ErrorDialog = true,
@@ -57,9 +57,11 @@ public class HoloCureGame : Game
             RedirectStandardError = true,
             WorkingDirectory = storage.GetFullPath(hcDir)
         });
+        proc?.WaitForExit();
+        onAlert(GameAlert.GameExited);
     }
 
-    public override async Task UpdateGame(Action<GameAlert> onAlert, Storage storage)
+    public override async Task UpdateGameAsync(Action<GameAlert> onAlert, Storage storage)
     {
         onAlert(GameAlert.CheckingForUpdates);
 
@@ -83,10 +85,11 @@ public class HoloCureGame : Game
     {
         if (!Directory.Exists(storage.GetFullPath(directory))) Directory.CreateDirectory(directory);
 
-        var dsReq = new LauncherJsonWebRequest<ItchDownloadSessions>($"{itch_url}/games/{game_id}/download_sessions")
+        var dsReq = new LauncherJsonWebRequest<ItchDownloadSessions>($"{itch_url}/games/{game_id}/download-sessions")
         {
             Method = HttpMethod.Post
         };
+        dsReq.AddHeader("Authorization", $"Bearer {api_key}");
         await dsReq.PerformAsync().ConfigureAwait(false);
         string uuid = dsReq.ResponseObject.Uuid;
 

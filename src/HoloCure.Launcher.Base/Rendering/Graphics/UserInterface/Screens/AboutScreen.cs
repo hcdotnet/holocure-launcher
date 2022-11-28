@@ -172,7 +172,7 @@ public class AboutScreen : LauncherScreen
         }
 
         [BackgroundDependencyLoader]
-        private void load(LauncherTheme theme)
+        private void load()
         {
             AutoSizeAxes = Axes.Both;
 

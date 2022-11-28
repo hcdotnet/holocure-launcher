@@ -26,7 +26,7 @@ public abstract class Game : CompositeDrawable
 
     public virtual Screen GetOrCreateScreen() => GameScreen ??= new GameLauncherScreen(this);
 
-    public abstract Task InstallOrPlayGame(Action<GameAlert> onAlert, Storage storage);
+    public abstract Task InstallOrPlayGameAsync(Action<GameAlert> onAlert, Storage storage);
 
-    public abstract Task UpdateGame(Action<GameAlert> onAlert, Storage storage);
+    public abstract Task UpdateGameAsync(Action<GameAlert> onAlert, Storage storage);
 }

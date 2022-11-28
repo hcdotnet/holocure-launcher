@@ -8,6 +8,8 @@ public enum GameAlert
     CheckingInstallation,
     InstallationNotFoundInstallingGame,
     InstallationFoundStartingGame,
+    GameStarted,
+    GameExited,
     CheckingForUpdates,
     NoUpdatesFound,
     UpdatingGame,
