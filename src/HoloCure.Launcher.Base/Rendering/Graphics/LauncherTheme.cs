@@ -12,7 +12,7 @@ public class LauncherTheme
 {
     public virtual Colour4 BackgroundColour => Color4.Black;
 
-    public virtual Colour4 ScreenStackBackgroundColor => Gray(0.025f);
+    public virtual Colour4 ScreenStackBackgroundColor => Gray(0.035f);
 
     public virtual Colour4 LinkIdleColor => Colour4.LightBlue;
 
