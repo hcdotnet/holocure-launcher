@@ -33,8 +33,10 @@ public class AboutScreen : LauncherScreen
             AutoSizeAxes = Axes.Y,
 
             TextAnchor = Anchor.BottomCentre,
-            Origin = Anchor.Centre,
-            Anchor = Anchor.Centre,
+            Origin = Anchor.TopCentre,
+            Anchor = Anchor.TopCentre,
+
+            Position = new Vector2(0f, 160f)
         };
 
         initializeAboutText(aboutText, theme, buildInfo);
@@ -98,6 +100,12 @@ public class AboutScreen : LauncherScreen
             x.Colour = theme.LogoWhiteColor;
         }
 
+        void finePrintLolStyle(SpriteText x)
+        {
+            defaultStyle(x);
+            x.Font = x.Font.With(size: 16f);
+        }
+
         aboutText.AddText("HoloCure", holocureStyle);
         aboutText.AddText(".", dotStyle);
         aboutText.AddText("Launcher ", launcherStyle);
@@ -137,6 +145,14 @@ public class AboutScreen : LauncherScreen
         aboutText.AddText("Copies of these licenses may be found in the root directory of the ", defaultStyle);
         aboutText.AddLink("HoloCure.Launcher repository", "https://github.com/steviegt6/holocure-launcher", theme.LogoWhiteColor, theme.LogoYellowColor, linkStyle);
         aboutText.AddText(".", defaultStyle);
+        aboutText.NewParagraph();
+
+        aboutText.NewParagraph();
+        aboutText.NewParagraph();
+
+        aboutText.AddParagraph("HoloCure.Launcher  Copyright (C) 2022  Tomat and HoloCure.Launcher contributors", finePrintLolStyle);
+        aboutText.AddParagraph("This program comes with ABSOLUTELY NO WARRANTY; for details see the aforementioned GNU General Public License.", finePrintLolStyle);
+        aboutText.AddParagraph("This is free software, and you are welcome to redistribute it under certain conditions; for details see the aforementioned GNU General Public License.", finePrintLolStyle);
     }
 
     private class ReturnButton : LauncherHoverContainer
