@@ -3,12 +3,14 @@
 
 using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
 using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
+using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 
 namespace HoloCure.Launcher.Game.Tests.Visual.UserInterface;
 
+[TestFixture]
 public class TestScenePaneledScreenStackEnsureMasked : LauncherTestScene
 {
     private class CornerBoxScreen : LauncherScreen

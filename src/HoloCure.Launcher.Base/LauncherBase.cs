@@ -1,10 +1,11 @@
 using System;
+using HoloCure.Launcher.Base.Games;
 using HoloCure.Launcher.Base.Rendering.Graphics;
-using osu.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
+using Game = osu.Framework.Game;
 
 namespace HoloCure.Launcher.Base;
 
@@ -26,6 +27,7 @@ public abstract partial class LauncherBase : Game
         dependencies.CacheAs(this);
         dependencies.CacheAs(BuildInfo);
         dependencies.CacheAs(new LauncherTheme());
+        dependencies.CacheAs(new GameProvider());
 
         InitializeStores();
 

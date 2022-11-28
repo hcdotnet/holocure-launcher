@@ -29,5 +29,10 @@ public class MainScreen : LauncherScreen
         tempText.AddIcon(FontAwesome.Solid.Skull, st => st.Size = new Vector2(20f));
 
         AddInternal(tempText);
+
+        InternalChildren = new Drawable[]
+        {
+            tempText
+        };
     }
 }
