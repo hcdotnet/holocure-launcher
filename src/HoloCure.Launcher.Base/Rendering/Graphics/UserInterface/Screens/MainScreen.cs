@@ -9,12 +9,14 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
+using osu.Framework.Screens;
 using osuTK;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
 
 public class MainScreen : LauncherScreen
 {
+    private ScreenStack innerStack = null!;
     private LauncherScrollContainer scrollContainer = null!;
     private Container scrollBackground = null!;
 
@@ -75,7 +77,24 @@ public class MainScreen : LauncherScreen
                     },
                     scrollContainer
                 }
+            },
+            innerStack = new ScreenStack
+            {
+                // Width set in Update.
+                RelativeSizeAxes = Axes.Y,
+
+                Anchor = Anchor.CentreRight,
+                Origin = Anchor.CentreRight,
+
+                Position = new Vector2(-8f, 0f)
             }
+        };
+
+        gameProvider.SelectedGame.ValueChanged += e =>
+        {
+            if (e.NewValue is null || e.NewValue == e.OldValue) return;
+
+            innerStack.Push(e.NewValue.GetOrCreateScreen());
         };
 
         gameProvider.Games.Value.ForEach(x => flowContainer.Add(x.MakeListItem()));
@@ -88,5 +107,6 @@ public class MainScreen : LauncherScreen
 
         scrollBackground.Height = scrollBackground.Parent.BoundingBox.Height - 16f;
         scrollContainer.Height = scrollBackground.BoundingBox.Height - 16f;
+        innerStack.Width = BoundingBox.Width - scrollBackground.BoundingBox.Width - 16f;
     }
 }
