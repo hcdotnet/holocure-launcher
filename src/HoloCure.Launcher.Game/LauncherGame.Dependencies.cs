@@ -7,7 +7,7 @@ namespace HoloCure.Launcher.Game;
 
 partial class LauncherGame
 {
-    private DependencyContainer dependencies = null!;
+    private DependencyContainer? dependencies;
 
     protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
 }

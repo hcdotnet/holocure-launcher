@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
@@ -12,7 +13,9 @@ namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 
 public class DrawableLinkCompiler : LauncherHoverContainer
 {
-    private List<Drawable> parts { get; }
+    public List<Drawable> Parts { get; }
+
+    public override bool ReceivePositionalInputAt(Vector2 screenSpacePos) => Parts.Any(d => d.ReceivePositionalInputAt(screenSpacePos));
 
     public DrawableLinkCompiler(ITextPart part)
         : this(part.Drawables.OfType<SpriteText>())
@@ -21,10 +24,14 @@ public class DrawableLinkCompiler : LauncherHoverContainer
 
     public DrawableLinkCompiler(IEnumerable<Drawable> parts)
     {
-        this.parts = parts.ToList();
+        Parts = parts.ToList();
     }
 
-    public override bool ReceivePositionalInputAt(Vector2 screenSpacePos) => parts.Any(d => d.ReceivePositionalInputAt(screenSpacePos));
+    [BackgroundDependencyLoader]
+    private void load(LauncherTheme theme)
+    {
+        if (IdleColor == default) IdleColor = theme.LinkIdleColor;
+    }
 
-    protected override IEnumerable<Drawable> EffectTargets => parts;
+    protected override IEnumerable<Drawable> EffectTargets => Parts;
 }

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\HoloCure.Launcher.Base\HoloCure.Launcher.Base.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Rendering" />
-  </ItemGroup>
-
 </Project>

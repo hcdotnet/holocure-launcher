@@ -4,28 +4,27 @@
 using System.Collections.Generic;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.Colour;
 using osu.Framework.Input.Events;
 
 namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
 
 public class LauncherHoverContainer : LauncherClickableContainer
 {
-    private const float FADE_DURATION = 500f;
+    protected const float FADE_DURATION = 500f;
 
-    private ColourInfo HoverColor { get; set; }
+    public Colour4 HoverColor { get; set; }
 
-    private ColourInfo IdleColor { get; set; }
-
-    private bool internalIsHovered { get; set; }
+    public Colour4 IdleColor { get; set; } = Colour4.White;
 
     protected virtual IEnumerable<Drawable> EffectTargets => new[] { Content };
+
+    private bool isHovered;
 
     public LauncherHoverContainer()
     {
         Enabled.ValueChanged += e =>
         {
-            if (!internalIsHovered) return;
+            if (!isHovered) return;
 
             if (e.NewValue)
                 fadeIn();
@@ -34,18 +33,11 @@ public class LauncherHoverContainer : LauncherClickableContainer
         };
     }
 
-    protected override void LoadComplete()
-    {
-        base.LoadComplete();
-
-        EffectTargets.ForEach(x => x.FadeColour(IdleColor));
-    }
-
     protected override bool OnHover(HoverEvent e)
     {
-        if (internalIsHovered) return false;
+        if (isHovered) return false;
 
-        internalIsHovered = true;
+        isHovered = true;
 
         if (!Enabled.Value) return false;
 
@@ -56,9 +48,9 @@ public class LauncherHoverContainer : LauncherClickableContainer
 
     protected override void OnHoverLost(HoverLostEvent e)
     {
-        if (!internalIsHovered) return;
+        if (!isHovered) return;
 
-        internalIsHovered = false;
+        isHovered = false;
         fadeOut();
 
         base.OnHoverLost(e);
