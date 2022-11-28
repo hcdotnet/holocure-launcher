@@ -68,7 +68,7 @@ public class HoloCureGame : Game
         (string updatedAt, double id) = await getLatestDownloadId();
         string hcDir = Path.Combine("Games", "HoloCure");
         string versionPath = Path.Combine(hcDir, "uat");
-        string currVersion = storage.Exists(versionPath) ? await File.ReadAllTextAsync(versionPath) : "";
+        string currVersion = storage.Exists(versionPath) ? await File.ReadAllTextAsync(storage.GetFullPath(versionPath)) : "";
 
         if (updatedAt == currVersion)
         {
