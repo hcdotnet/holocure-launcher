@@ -52,7 +52,7 @@ internal class DRPComponent : Component
 
         presence.Timestamps = new Timestamps
         {
-            Start = playingGame is not null ? DateTime.Now : null
+            Start = playingGame is not null ? DateTime.UtcNow : null
         };
 
         updateStatus();
