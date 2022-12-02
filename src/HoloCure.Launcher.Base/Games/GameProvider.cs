@@ -15,6 +15,9 @@ public class GameProvider
 
     public virtual Bindable<Game?> SelectedGame { get; } = new();
 
+    // THIS IS TEMPORARY; EXISTS FOR DRPC IN DESKTOP IMPL UNTIL WE REWRITE LAUNCHING
+    public virtual Bindable<Game?> PlayingGame { get; } = new();
+
     public GameProvider()
     {
         Games = new Lazy<List<Game>>(() => GetGames().ToList());
