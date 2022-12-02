@@ -32,8 +32,6 @@ public class SentryLogger : IDisposable
 
     private void processLogEntry(LogEntry entry)
     {
-        if (entry.Level < LogLevel.Verbose) return;
-
         if (entry.Exception is { } ex)
         {
             if (!shouldSubmitException(ex)) return;
