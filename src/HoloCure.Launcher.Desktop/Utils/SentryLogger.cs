@@ -32,7 +32,7 @@ public class SentryLogger : IDisposable
 
     private void processLogEntry(LogEntry entry)
     {
-        if (entry.Level < LogLevel.Verbose) return;
+        if (!shouldSubmitEntry(ref entry)) return;
 
         if (entry.Exception is { } ex)
         {
@@ -91,6 +91,15 @@ public class SentryLogger : IDisposable
             _ => throw new ArgumentOutOfRangeException(nameof(entryLevel), entryLevel, null)
         };
 
+    private bool shouldSubmitEntry(ref LogEntry entry)
+    {
+        // Modify "[context] Log for [user]" message to omit identifiable name.
+        // Maybe redact/remove GL logging as well? Could be considered a tracking vector, but it's important info (as is OS type, etc.), so not sure.
+        if (entry.Level == LogLevel.Verbose && entry.Message.Contains(" Log for ")) entry.Message = entry.Message.Replace(Environment.UserName, "[name removed]");
+
+        return true;
+    }
+
     private bool shouldSubmitException(Exception exception)
     {
         switch (exception)
@@ -100,7 +109,7 @@ public class SentryLogger : IDisposable
                 const int hr_error_handle_disk_full = unchecked((int)0x80070027);
                 const int hr_error_disk_full = unchecked((int)0x80070070);
 
-                if (ioe.HResult == hr_error_handle_disk_full || ioe.HResult == hr_error_disk_full) return false;
+                if (ioe.HResult is hr_error_handle_disk_full or hr_error_disk_full) return false;
 
                 break;
         }
