@@ -16,6 +16,7 @@
 
   <ItemGroup Label="Package References">
     <PackageReference Include="DiscordRichPresence" Version="1.0.175" />
+    <PackageReference Include="Sentry" Version="3.24.0" />
   </ItemGroup>
 
   <ItemGroup Label="Resources">

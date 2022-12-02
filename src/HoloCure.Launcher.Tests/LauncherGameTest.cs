@@ -5,7 +5,7 @@ namespace HoloCure.Launcher.Game.Tests;
 
 public class LauncherGameTest : LauncherBase
 {
-    protected override IBuildInfo BuildInfo { get; } = new TestBuildInfo();
+    public override IBuildInfo BuildInfo { get; } = new TestBuildInfo();
 
     private class TestBuildInfo : IBuildInfo
     {

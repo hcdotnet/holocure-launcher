@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using HoloCure.Launcher.Desktop.Components;
+using HoloCure.Launcher.Desktop.Utils;
 using HoloCure.Launcher.Game;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
@@ -20,6 +21,13 @@ public class LauncherGameDesktop : LauncherGame
     private const int window_height = 800;
 
     private DependencyContainer dependencies = null!;
+
+    private SentryLogger sentryLogger;
+
+    public LauncherGameDesktop()
+    {
+        sentryLogger = new SentryLogger(this);
+    }
 
     protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
 
@@ -51,5 +59,11 @@ public class LauncherGameDesktop : LauncherGame
 
         LoadComponentAsync(new DRPComponent());
         LoadComponentAsync(new UpdaterComponent());
+    }
+
+    protected override void Dispose(bool isDisposing)
+    {
+        base.Dispose(isDisposing);
+        sentryLogger.Dispose();
     }
 }
