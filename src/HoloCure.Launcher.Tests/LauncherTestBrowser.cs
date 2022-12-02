@@ -26,7 +26,7 @@ public class LauncherTestBrowser : LauncherBase
         host.Window.CursorState |= CursorState.Hidden;
     }
 
-    protected override IBuildInfo BuildInfo { get; } = new BrowserBuildInfo();
+    public override IBuildInfo BuildInfo { get; } = new BrowserBuildInfo();
 
     private class BrowserBuildInfo : IBuildInfo
     {

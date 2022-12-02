@@ -9,7 +9,7 @@ namespace HoloCure.Launcher.Game;
 
 partial class LauncherGame
 {
-    protected override IBuildInfo BuildInfo { get; } = new GameBuildInfo();
+    public override IBuildInfo BuildInfo { get; } = new GameBuildInfo();
 
     public class GameBuildInfo : IBuildInfo
     {

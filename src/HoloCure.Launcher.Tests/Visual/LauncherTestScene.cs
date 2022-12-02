@@ -10,7 +10,7 @@ public class LauncherTestScene : TestScene
 
     private class LauncherTestSceneTestRunner : LauncherBase, ITestSceneTestRunner
     {
-        protected override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();
+        public override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();
 
         private TestSceneTestRunner.TestRunner runner = null!;
 
