@@ -7,7 +7,7 @@ namespace HoloCure.Launcher.Base;
 
 partial class LauncherBase
 {
-    protected abstract IBuildInfo BuildInfo { get; }
+    public abstract IBuildInfo BuildInfo { get; }
 }
 
 public interface IBuildInfo
