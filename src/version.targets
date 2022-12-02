@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <ReleaseChannel>release</ReleaseChannel>
-    <UnifiedVersion>0.1.1</UnifiedVersion>
+    <UnifiedVersion>0.1.1.1</UnifiedVersion>
   </PropertyGroup>
 
 </Project>
