@@ -58,6 +58,7 @@ public class HoloCureGame : Game
             RedirectStandardError = true,
             WorkingDirectory = storage.GetFullPath(hcDir)
         });
+        onAlert(GameAlert.GameStarted);
         proc?.WaitForExit();
         onAlert(GameAlert.GameExited);
     }

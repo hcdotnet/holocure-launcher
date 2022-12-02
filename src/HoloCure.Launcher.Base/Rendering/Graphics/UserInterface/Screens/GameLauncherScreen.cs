@@ -77,14 +77,14 @@ public class GameLauncherScreen : LauncherScreen
 
                             case GameAlert.GameStarted:
                                 playButton.UpdateText("Game started!");
-                                Schedule(() => { gameProvider.PlayingGame.Value = game; /* TEMPORARY  */ });
+                                gameProvider.PlayingGame.Value = game; /* TEMPORARY  */
                                 break;
 
                             case GameAlert.GameExited:
                                 playButton.UpdateText("Play Game");
                                 playButton.Enabled.Value = true;
                                 updateButton.Enabled.Value = true;
-                                Schedule(() => { gameProvider.PlayingGame.Value = null; /* TEMPORARY  */ });
+                                gameProvider.PlayingGame.Value = null; /* TEMPORARY  */
                                 break;
 
                             case GameAlert.CheckingForUpdates:
