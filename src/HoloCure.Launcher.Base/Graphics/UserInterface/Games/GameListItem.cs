@@ -2,7 +2,7 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using HoloCure.Launcher.Base.Games;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.Containers;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
@@ -12,7 +12,7 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Games;
+namespace HoloCure.Launcher.Base.Graphics.UserInterface.Games;
 
 public class GameListItem : CompositeDrawable
 {

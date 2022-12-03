@@ -11,7 +11,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Localisation;
 using osu.Framework.Platform;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+namespace HoloCure.Launcher.Base.Graphics.Containers;
 
 public class LinkFlowContainer : LauncherTextFlowContainer
 {

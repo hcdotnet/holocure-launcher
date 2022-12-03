@@ -4,7 +4,7 @@
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+namespace HoloCure.Launcher.Base.Graphics.Screens;
 
 public abstract class LauncherScreen : Screen
 {

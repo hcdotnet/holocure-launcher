@@ -2,8 +2,8 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using System.Collections.Generic;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
-using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+using HoloCure.Launcher.Base.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
@@ -13,7 +13,7 @@ using osu.Framework.Input.Events;
 using osu.Framework.Screens;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+namespace HoloCure.Launcher.Base.Graphics.UserInterface.Screens;
 
 public class AboutScreen : LauncherScreen
 {

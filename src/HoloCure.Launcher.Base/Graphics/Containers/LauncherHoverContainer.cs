@@ -6,7 +6,7 @@ using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Input.Events;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+namespace HoloCure.Launcher.Base.Graphics.Containers;
 
 public class LauncherHoverContainer : LauncherClickableContainer
 {

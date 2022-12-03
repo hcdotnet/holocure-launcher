@@ -2,7 +2,7 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using HoloCure.Launcher.Base.Games.HoloCure;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.Containers;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;

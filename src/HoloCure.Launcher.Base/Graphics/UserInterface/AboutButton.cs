@@ -2,8 +2,8 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using System;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
-using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+using HoloCure.Launcher.Base.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.UserInterface.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
@@ -13,7 +13,7 @@ using osu.Framework.Localisation;
 using osu.Framework.Screens;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
+namespace HoloCure.Launcher.Base.Graphics.UserInterface;
 
 public class AboutButton : LauncherClickableContainer
 {

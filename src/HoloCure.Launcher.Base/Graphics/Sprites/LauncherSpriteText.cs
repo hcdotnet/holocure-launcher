@@ -3,7 +3,7 @@
 
 using osu.Framework.Graphics.Sprites;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Sprites;
+namespace HoloCure.Launcher.Base.Graphics.Sprites;
 
 public class LauncherSpriteText : SpriteText
 {
