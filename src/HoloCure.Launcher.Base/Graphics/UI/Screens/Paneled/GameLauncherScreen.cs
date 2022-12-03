@@ -18,7 +18,7 @@ using osu.Framework.Localisation;
 using osu.Framework.Platform;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Graphics.UserInterface.Screens;
+namespace HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 
 public class GameLauncherScreen : LauncherScreen
 {

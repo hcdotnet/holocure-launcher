@@ -13,7 +13,7 @@ using osu.Framework.Input.Events;
 using osu.Framework.Screens;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Graphics.UserInterface.Screens;
+namespace HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 
 public class AboutScreen : LauncherScreen
 {

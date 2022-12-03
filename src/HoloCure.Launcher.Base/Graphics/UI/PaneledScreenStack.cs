@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Screens;
 
-namespace HoloCure.Launcher.Base.Graphics.UserInterface;
+namespace HoloCure.Launcher.Base.Graphics.UI;
 
 public class PaneledScreenStack : CompositeDrawable
 {

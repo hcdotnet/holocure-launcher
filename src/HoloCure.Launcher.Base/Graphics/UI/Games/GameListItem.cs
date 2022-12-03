@@ -12,7 +12,7 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Graphics.UserInterface.Games;
+namespace HoloCure.Launcher.Base.Graphics.UI.Games;
 
 public class GameListItem : CompositeDrawable
 {
