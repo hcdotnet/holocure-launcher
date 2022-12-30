@@ -54,8 +54,10 @@ public class HoloCureGame : Game
             FileName = storage.GetFullPath(executable),
             ErrorDialog = true,
             UseShellExecute = false,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
+            // Don't redirect STD I/O, causes issues with freezing. Fixes GH-24.
+            // https://github.com/steviegt6/holocure-launcher/issues/24
+            // RedirectStandardOutput = true,
+            // RedirectStandardError = true,
             WorkingDirectory = storage.GetFullPath(hcDir)
         });
         onAlert(GameAlert.GameStarted);
