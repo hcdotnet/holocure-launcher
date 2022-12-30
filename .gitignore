@@ -1,6 +1,6 @@
 # IDE/editor caches
 .vs/
-.rider/
+.idea/
 .vscode/
 
 # Binary and object files/caches
