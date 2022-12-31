@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Sprites;
 
 // https://github.com/ppy/osu/blob/master/osu.Game/Graphics/OsuFont.cs
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics;
+namespace HoloCure.Launcher.Base.Graphics;
 
 public static class LauncherFont
 {

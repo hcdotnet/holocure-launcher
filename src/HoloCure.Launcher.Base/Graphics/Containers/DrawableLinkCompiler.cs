@@ -9,7 +9,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+namespace HoloCure.Launcher.Base.Graphics.Containers;
 
 public class DrawableLinkCompiler : LauncherHoverContainer
 {

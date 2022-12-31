@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HoloCure.Launcher.Base.Games;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
-using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+using HoloCure.Launcher.Base.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
@@ -18,7 +18,7 @@ using osu.Framework.Localisation;
 using osu.Framework.Platform;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+namespace HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 
 public class GameLauncherScreen : LauncherScreen
 {

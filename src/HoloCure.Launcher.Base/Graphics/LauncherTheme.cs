@@ -6,7 +6,7 @@
 using osu.Framework.Graphics;
 using osuTK.Graphics;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics;
+namespace HoloCure.Launcher.Base.Graphics;
 
 public class LauncherTheme
 {

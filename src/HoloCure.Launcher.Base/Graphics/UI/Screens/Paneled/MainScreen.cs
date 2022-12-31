@@ -3,8 +3,8 @@
 
 using System.Linq;
 using HoloCure.Launcher.Base.Games;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
-using HoloCure.Launcher.Base.Rendering.Graphics.Screens;
+using HoloCure.Launcher.Base.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.Screens;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
@@ -12,7 +12,7 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Screens;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+namespace HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 
 public class MainScreen : LauncherScreen
 {

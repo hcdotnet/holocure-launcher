@@ -3,8 +3,8 @@
 
 using System;
 using System.Linq;
-using HoloCure.Launcher.Base.Rendering.Graphics.Containers;
-using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+using HoloCure.Launcher.Base.Graphics.Containers;
+using HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
@@ -12,7 +12,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 using osuTK;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
+namespace HoloCure.Launcher.Base.Graphics.UI;
 
 public class LauncherOverlay : CompositeDrawable
 {
@@ -41,9 +41,9 @@ public class LauncherOverlay : CompositeDrawable
         {
             Panel = new PaneledScreenStack
             {
-                // 0 height and width until animations are done playing so we can resize according to padding.
-                Height = 0,
-                Width = 0,
+                RelativeSizeAxes = Axes.Both,
+                Height = 0f,
+                Width = 0f,
 
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre
@@ -269,8 +269,14 @@ public class LauncherOverlay : CompositeDrawable
 
         // Using BoundingBox here probably isn't the best idea, but it works.
         Panel.MoveToOffset(new Vector2(0f, -yOffset / 2f));
-        Panel.Height = Parent.BoundingBox.Height - yOffset - y_padding;
-        Panel.Width = Parent.BoundingBox.Width - x_padding;
+        Panel.Height = Panel.Width = 1f;
+        Panel.SetPadding(new MarginPadding
+        {
+            Top = (yOffset + y_padding) / 2f,
+            Bottom = (yOffset + y_padding) / 2f,
+            Left = x_padding / 2f,
+            Right = x_padding / 2f,
+        });
 
         Panel.FadeIn(duration);
 

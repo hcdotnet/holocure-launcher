@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Games;
-using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface.Screens;
+using HoloCure.Launcher.Base.Graphics.UI.Games;
+using HoloCure.Launcher.Base.Graphics.UI.Screens.Paneled;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Localisation;
 using osu.Framework.Platform;

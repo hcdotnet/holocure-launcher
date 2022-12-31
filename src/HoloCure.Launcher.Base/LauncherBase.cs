@@ -1,6 +1,6 @@
 using System;
 using HoloCure.Launcher.Base.Games;
-using HoloCure.Launcher.Base.Rendering.Graphics;
+using HoloCure.Launcher.Base.Graphics;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;

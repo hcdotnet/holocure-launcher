@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Localisation;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+namespace HoloCure.Launcher.Base.Graphics.Containers;
 
 public class LauncherClickableContainer : ClickableContainer, IHasTooltip
 {

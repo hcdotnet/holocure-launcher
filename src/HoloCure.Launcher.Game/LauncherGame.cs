@@ -1,6 +1,6 @@
 ﻿using System;
 using HoloCure.Launcher.Base;
-using HoloCure.Launcher.Base.Rendering.Graphics.UserInterface;
+using HoloCure.Launcher.Base.Graphics.UI;
 using osu.Framework.Allocation;
 
 namespace HoloCure.Launcher.Game;

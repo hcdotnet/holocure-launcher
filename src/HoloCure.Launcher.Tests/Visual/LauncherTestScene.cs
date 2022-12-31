@@ -8,6 +8,23 @@ public class LauncherTestScene : TestScene
 {
     protected override ITestSceneTestRunner CreateRunner() => new LauncherTestSceneTestRunner();
 
+    /*public virtual void AddDurationWaitStep(string? description, double duration)
+    {
+        bool wait()
+        {
+            bool durationWaited = false;
+            Scheduler.AddDelayed(() => durationWaited = true, duration);
+
+            while (!durationWaited) { }
+
+            return true;
+        }
+
+        void task() => StepsContainer.Add(new UntilStepButton(wait) { Text = description ?? "Duration" });
+
+        Scheduler.Add(task, false);
+    }*/
+
     private class LauncherTestSceneTestRunner : LauncherBase, ITestSceneTestRunner
     {
         public override IBuildInfo BuildInfo { get; } = new TestSceneBuildInfo();

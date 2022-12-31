@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Tomat. Licensed under the GPL v3 License.
 // See the LICENSE-GPL file in the repository root for full license text.
 
-using HoloCure.Launcher.Base.Rendering.Graphics.Sprites;
+using HoloCure.Launcher.Base.Graphics.Sprites;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
@@ -12,7 +12,7 @@ using osu.Framework.Localisation;
 using osuTK;
 using osuTK.Graphics;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Cursor;
+namespace HoloCure.Launcher.Base.Graphics.Cursor;
 
 public class LauncherTooltipContainer : TooltipContainer
 {

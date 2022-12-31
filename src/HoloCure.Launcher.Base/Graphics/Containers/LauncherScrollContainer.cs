@@ -9,7 +9,7 @@ using osu.Framework.Input.Events;
 using osuTK;
 using osuTK.Input;
 
-namespace HoloCure.Launcher.Base.Rendering.Graphics.Containers;
+namespace HoloCure.Launcher.Base.Graphics.Containers;
 
 public class LauncherScrollContainer : LauncherScrollContainer<Drawable>
 {
