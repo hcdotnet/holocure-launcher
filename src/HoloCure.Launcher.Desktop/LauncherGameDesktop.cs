@@ -34,7 +34,7 @@ public class LauncherGameDesktop : LauncherGame
     protected override IDictionary<FrameworkSetting, object> GetFrameworkConfigDefaults()
     {
         IDictionary<FrameworkSetting, object> defaults = base.GetFrameworkConfigDefaults() ?? new Dictionary<FrameworkSetting, object>();
-        // defaults[FrameworkSetting.WindowedSize] = new Size(window_width, window_height);
+        defaults[FrameworkSetting.WindowedSize] = new Size(window_width, window_height);
         return defaults;
     }
 
@@ -45,7 +45,6 @@ public class LauncherGameDesktop : LauncherGame
         if (host.Window is not SDL2DesktopWindow sdlWindow) return;
 
         sdlWindow.Title = Name;
-        sdlWindow.MinSize = new Size(window_width, window_height);
 
         // osu does this, likely an edge case? idk... works on my machine
         Stream icoStream = typeof(LauncherGameDesktop).Assembly.GetManifestResourceStream(typeof(LauncherGameDesktop), launcher_icon)!;
