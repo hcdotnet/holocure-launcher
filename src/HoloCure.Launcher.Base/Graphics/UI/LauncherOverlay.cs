@@ -41,9 +41,9 @@ public class LauncherOverlay : CompositeDrawable
         {
             Panel = new PaneledScreenStack
             {
-                // 0 height and width until animations are done playing so we can resize according to padding.
-                Height = 0,
-                Width = 0,
+                RelativeSizeAxes = Axes.Both,
+                Height = 0f,
+                Width = 0f,
 
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre
@@ -269,7 +269,6 @@ public class LauncherOverlay : CompositeDrawable
 
         // Using BoundingBox here probably isn't the best idea, but it works.
         Panel.MoveToOffset(new Vector2(0f, -yOffset / 2f));
-        Panel.RelativeSizeAxes = Axes.Both;
         Panel.Height = Panel.Width = 1f;
         Panel.SetPadding(new MarginPadding
         {
