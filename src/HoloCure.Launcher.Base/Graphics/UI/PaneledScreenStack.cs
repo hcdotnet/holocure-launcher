@@ -16,26 +16,35 @@ public class PaneledScreenStack : CompositeDrawable
     [BackgroundDependencyLoader]
     private void load(LauncherTheme theme)
     {
-        Masking = true;
-        CornerRadius = 10f;
-
-        InternalChildren = new Drawable[]
+        // FIX: We apply padding to this CompositeDrawable, so Masking
+        // (specifically CornerRadius) does not apply to the visible portion.
+        // This is resolved by embedding the children within a Container that
+        // instead has our Masking and CornerRadius values.
+        // Thankfully, RelativeSizeAxes are confined within the bounds of the
+        // drawable, excluding the padding, meaning we don't have this same
+        // issue with a child.
+        InternalChild = new Container
         {
-            new Box
+            Masking = true,
+            CornerRadius = 10f,
+
+            RelativeSizeAxes = Axes.Both,
+
+            Children = new Drawable[]
             {
-                RelativeSizeAxes = Axes.Both,
-
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-
-                Colour = theme.ScreenStackBackgroundColor
-            },
-            Stack = new ScreenStack
-            {
-                RelativeSizeAxes = Axes.Both,
-
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre
+                new Box
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Colour = theme.ScreenStackBackgroundColor
+                },
+                Stack = new ScreenStack
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre
+                }
             }
         };
     }
