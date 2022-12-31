@@ -39,4 +39,9 @@ public class PaneledScreenStack : CompositeDrawable
             }
         };
     }
+
+    public void SetPadding(MarginPadding padding)
+    {
+        Padding = padding;
+    }
 }

@@ -269,8 +269,15 @@ public class LauncherOverlay : CompositeDrawable
 
         // Using BoundingBox here probably isn't the best idea, but it works.
         Panel.MoveToOffset(new Vector2(0f, -yOffset / 2f));
-        Panel.Height = Parent.BoundingBox.Height - yOffset - y_padding;
-        Panel.Width = Parent.BoundingBox.Width - x_padding;
+        Panel.RelativeSizeAxes = Axes.Both;
+        Panel.Height = Panel.Width = 1f;
+        Panel.SetPadding(new MarginPadding
+        {
+            Top = (yOffset + y_padding) / 2f,
+            Bottom = (yOffset + y_padding) / 2f,
+            Left = x_padding / 2f,
+            Right = x_padding / 2f,
+        });
 
         Panel.FadeIn(duration);
 
