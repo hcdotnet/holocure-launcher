@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using HoloCure.Launcher.Base.Core.IO.Network;
 using HoloCure.Launcher.Base.Core.IO.Network.Requests;
 using osu.Framework.Localisation;
+using osu.Framework.Logging;
 using osu.Framework.Platform;
 
 namespace HoloCure.Launcher.Base.Games.HoloCure;
@@ -31,6 +32,8 @@ public class HoloCureGame : Game
     public override async Task InstallOrPlayGameAsync(Action<GameAlert> onAlert, Storage storage)
     {
         // Eventually make paths configurable - settings and profiles...
+
+        var logger = Logger.GetLogger("HoloCure");
 
         onAlert(GameAlert.CheckingInstallation);
 
@@ -54,14 +57,31 @@ public class HoloCureGame : Game
             FileName = storage.GetFullPath(executable),
             ErrorDialog = true,
             UseShellExecute = false,
-            // Don't redirect STD I/O, causes issues with freezing. Fixes GH-24.
-            // https://github.com/steviegt6/holocure-launcher/issues/24
-            // RedirectStandardOutput = true,
-            // RedirectStandardError = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
             WorkingDirectory = storage.GetFullPath(hcDir)
         });
         onAlert(GameAlert.GameStarted);
-        proc?.WaitForExit();
+
+        if (proc is null)
+        {
+            logger.Add("Failed to start game process.", LogLevel.Error);
+        }
+        else
+        {
+            proc.OutputDataReceived += (_,  args) =>
+            {
+                logger.Add(args.Data, LogLevel.Debug);
+            };
+
+            proc.ErrorDataReceived += (_, args) =>
+            {
+                logger.Add(args.Data, LogLevel.Error);
+            };
+
+            proc?.WaitForExit();
+        }
+
         onAlert(GameAlert.GameExited);
     }
 
