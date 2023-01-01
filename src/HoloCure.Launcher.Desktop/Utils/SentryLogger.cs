@@ -21,7 +21,7 @@ public class SentryLogger : IDisposable
         this.game = game;
         sentrySession = SentrySdk.Init(options =>
         {
-            if (game.BuildInfo.IsDeployedBuild) options.Dsn = "https://265de30d478a413db48e350e3d36a515@sentry.tomat.dev/3";
+            if (game.BuildInfo.IsDeployedBuild) options.Dsn = "https://d17c15f7a4e04e4d82ab6b941d3069cd@sentry.tomat.dev/2";
             options.AutoSessionTracking = true;
             options.IsEnvironmentUser = false; // ensure user isn't tracked; try to scrub away more information if any exists?
             options.Release = $"{LauncherBase.GAME_NAME}@{game.BuildInfo.AssemblyVersion.ToString()}-{game.BuildInfo.ReleaseChannel}";
