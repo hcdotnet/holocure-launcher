@@ -6,6 +6,7 @@ using HoloCure.Launcher.Desktop.Utils;
 using HoloCure.Launcher.Game;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
+using osu.Framework.Logging;
 using osu.Framework.Platform;
 
 namespace HoloCure.Launcher.Desktop;
@@ -24,9 +25,9 @@ public class LauncherGameDesktop : LauncherGame
 
     private SentryLogger sentryLogger;
 
-    public LauncherGameDesktop()
+    public LauncherGameDesktop(IEnumerable<LogEntry>? startupEntries = null)
     {
-        sentryLogger = new SentryLogger(this);
+        sentryLogger = new SentryLogger(this, startupEntries);
     }
 
     protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));

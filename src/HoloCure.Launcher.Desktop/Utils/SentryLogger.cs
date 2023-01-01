@@ -2,6 +2,7 @@
 // See the LICENSE-GPL file in the repository root for full license text.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using HoloCure.Launcher.Base;
 using osu.Framework;
@@ -16,18 +17,42 @@ public class SentryLogger : IDisposable
     private LauncherBase game;
     private readonly IDisposable? sentrySession;
 
-    public SentryLogger(LauncherBase game)
+    public SentryLogger(LauncherBase game, IEnumerable<LogEntry>? startupEntries)
     {
         this.game = game;
         sentrySession = SentrySdk.Init(options =>
         {
-            if (game.BuildInfo.IsDeployedBuild) options.Dsn = "https://265de30d478a413db48e350e3d36a515@sentry.tomat.dev/3";
+            if (!game.BuildInfo.IsDeployedBuild) options.Dsn = "https://d17c15f7a4e04e4d82ab6b941d3069cd@sentry.tomat.dev/2";
+            options.MaxBreadcrumbs = int.MaxValue; // Allow for as many breadcrumbs as possible.
+            options.EnableScopeSync = true;
             options.AutoSessionTracking = true;
             options.IsEnvironmentUser = false; // ensure user isn't tracked; try to scrub away more information if any exists?
             options.Release = $"{LauncherBase.GAME_NAME}@{game.BuildInfo.AssemblyVersion.ToString()}-{game.BuildInfo.ReleaseChannel}";
+            options.BeforeBreadcrumb += processBreadcrumb;
         });
 
         Logger.NewEntry += processLogEntry;
+
+        // Add startup log entries that occurred before Sentry was initialized.
+        // This is important for canonicity with breadcrumbs.
+        if (startupEntries is not null)
+            logEntries(startupEntries);
+    }
+
+    private void logEntries(IEnumerable<LogEntry> entries)
+    {
+        // Run processLogEntry for each cached entry in order to impersonate a
+        // legitimate log entry. I doubt any issues will arise from this.
+        // We should consider adding a breadcrumb or log entry that shows when
+        // this process begins and ends to better separate these from legitimate
+        // log entries.
+        foreach (var entry in entries)
+            processLogEntry(entry);
+    }
+
+    private Breadcrumb? processBreadcrumb(Breadcrumb breadcrumb)
+    {
+        return breadcrumb;
     }
 
     private void processLogEntry(LogEntry entry)
@@ -68,7 +93,13 @@ public class SentryLogger : IDisposable
             );
         }
         else
-            SentrySdk.AddBreadcrumb(entry.Message, entry.Target.ToString(), "navigation", level: getBreadcrumbLevel(entry.Level));
+            SentrySdk.AddBreadcrumb(entry.Message, getCategory(entry), "navigation", level: getBreadcrumbLevel(entry.Level));
+    }
+
+    private string getCategory(LogEntry entry)
+    {
+        var category = entry.Target?.ToString() ?? entry.LoggerName;
+        return category ?? "unknown";
     }
 
     private BreadcrumbLevel getBreadcrumbLevel(LogLevel entryLevel) =>
@@ -94,7 +125,11 @@ public class SentryLogger : IDisposable
     private bool shouldSubmitEntry(ref LogEntry entry)
     {
         // Modify "[context] Log for [user]" message to omit identifiable name.
-        // Maybe redact/remove GL logging as well? Could be considered a tracking vector, but it's important info (as is OS type, etc.), so not sure.
+        // The above ^ is not actually emitted to NewEntry, so this goes unused
+        // (good!). I have opted to keep this here just to be safe, however.
+        // Maybe redact/remove GL logging as well? Could be considered a
+        // tracking vector, but it's important info (as is OS type, etc.), so
+        // not sure.
         if (entry.Level == LogLevel.Verbose && entry.Message.Contains(" Log for ")) entry.Message = entry.Message.Replace(Environment.UserName, "[name removed]");
 
         return true;
