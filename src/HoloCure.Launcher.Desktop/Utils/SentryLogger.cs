@@ -68,7 +68,13 @@ public class SentryLogger : IDisposable
             );
         }
         else
-            SentrySdk.AddBreadcrumb(entry.Message, entry.Target?.ToString() ?? entry.LoggerName, "navigation", level: getBreadcrumbLevel(entry.Level));
+            SentrySdk.AddBreadcrumb(entry.Message, getCategory(entry), "navigation", level: getBreadcrumbLevel(entry.Level));
+    }
+
+    private string getCategory(LogEntry entry)
+    {
+        var category = entry.Target?.ToString() ?? entry.LoggerName;
+        return category ?? "unknown";
     }
 
     private BreadcrumbLevel getBreadcrumbLevel(LogLevel entryLevel) =>
