@@ -4,7 +4,7 @@
 
 # HoloCure.Launcher ![License](https://img.shields.io/github/license/steviegt6/holocure-launcher?style=flat-square) ![Release](https://img.shields.io/github/v/release/steviegt6/holocure-launcher?style=flat-square) ![Language](https://img.shields.io/badge/language-c%23-green?style=flat-square)
 
-> Free and open-source, feature-rich, powerful launcher for HoloCure.
+> > [\[discord\]](https://discord.gg/KvqKGQNbhr) Free and open-source, feature-rich, powerful launcher for HoloCure.
 
 **HoloCure.Launcher** is a feature-rich, free (as in both "freedom" and "free beer"), and open-source launcher for HoloCure, aiming to make your experience even better than before.
 
