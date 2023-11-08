@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project has been archived. This was created originally to facilitate mod loading, but the original vision worked with VM builds of the game that are no longer updated. Additionally, I have grown to like the itch.io launcher, and HoloCure is now on Steam as well. This project is redundant.
+
 <img src="assets/logo_rocket.png" align="right" width="128" height="128" />
 
 > This is the devel (development) branch, see [`master`](https://github.com/steviegt6/holocure-launcher/tree/master) for release versions.
